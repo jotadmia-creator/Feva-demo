@@ -1,9 +1,14 @@
 {
   "rewrites": [
     { "source": "/", "destination": "/feva/index.html" },
+    { "source": "/index.html", "destination": "/feva/index.html" },
     { "source": "/carta", "destination": "/feva/carta.html" },
+    { "source": "/carta.html", "destination": "/feva/carta.html" },
     { "source": "/galeria", "destination": "/feva/galeria.html" },
+    { "source": "/galeria.html", "destination": "/feva/galeria.html" },
     { "source": "/nosotros", "destination": "/feva/nosotros.html" },
-    { "source": "/contacto", "destination": "/feva/contacto.html" }
+    { "source": "/nosotros.html", "destination": "/feva/nosotros.html" },
+    { "source": "/contacto", "destination": "/feva/contacto.html" },
+    { "source": "/contacto.html", "destination": "/feva/contacto.html" }
   ]
 }
