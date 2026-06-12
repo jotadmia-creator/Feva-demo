@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/feva/index.html" },
+    { "source": "/carta", "destination": "/feva/carta.html" },
+    { "source": "/galeria", "destination": "/feva/galeria.html" },
+    { "source": "/nosotros", "destination": "/feva/nosotros.html" },
+    { "source": "/contacto", "destination": "/feva/contacto.html" }
+  ]
+}
