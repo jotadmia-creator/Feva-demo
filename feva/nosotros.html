@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestra Historia — Feva | Palma, Mallorca</title>
+  <meta name="description" content="Conoce la historia de Marcos Ferrer y por qué nació Feva. Cocina mallorquina de proximidad con alma de emprendedor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--pr:#C4614A;--pr-d:#A34D3A;--sec:#2C4A2E;--acc:#D4A853;--dark:#1C1209;--cream:#F7F2EB;--light:#FEFCF9;--txt:#3A3330;--txt-m:#7A6E68;--border:rgba(196,97,74,.15);--ft:'Playfair Display',Georgia,serif;--fb:'Nunito',sans-serif;--sh-s:0 2px 8px rgba(28,18,9,.08);--sh-m:0 4px 24px rgba(28,18,9,.12);--r:14px;--ease:.3s cubic-bezier(.4,0,.2,1);--mw:1160px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{font-family:var(--fb);color:var(--txt);background:var(--light);line-height:1.7;overflow-x:hidden;}a{text-decoration:none;color:inherit;}
+    #prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--pr),var(--acc));z-index:9999;transition:width .1s;}
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:var(--ease);}
+    header.scrolled{background:rgba(28,18,9,.97);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(0,0,0,.3);}
+    .logo{font-family:var(--ft);font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:5px;text-transform:uppercase;}.logo b{color:var(--acc);}
+    nav{display:flex;align-items:center;gap:28px;}nav a{color:rgba(255,255,255,.8);font-size:.82rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;transition:var(--ease);position:relative;}
+    nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--acc);transition:var(--ease);}nav a:hover,nav a.active{color:#fff;}nav a:hover::after,nav a.active::after{width:100%;}
+    .nav-cta{background:var(--pr)!important;color:#fff!important;padding:9px 22px;border-radius:50px;font-weight:700!important;}.nav-cta::after{display:none!important;}.nav-cta:hover{background:var(--pr-d)!important;transform:translateY(-1px);}
+    .nav-phone{color:rgba(255,255,255,.55)!important;font-size:.75rem!important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:var(--ease);}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}.hamburger.open span:nth-child(2){opacity:0;}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+    .mob-nav{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(28,18,9,.98);backdrop-filter:blur(16px);padding:24px 32px;flex-direction:column;gap:0;z-index:999;border-top:1px solid rgba(255,255,255,.08);}.mob-nav.open{display:flex;}.mob-nav a{color:rgba(255,255,255,.8);font-size:.95rem;font-weight:500;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-weight:700;font-size:.95rem;transition:var(--ease);cursor:pointer;border:none;font-family:var(--fb);}
+    .btn-pr{background:var(--pr);color:#fff;box-shadow:0 4px 20px rgba(196,97,74,.4);}.btn-pr:hover{background:var(--pr-d);transform:translateY(-2px);}
+    .btn-wa{background:#25D366;color:#fff;box-shadow:0 4px 20px rgba(37,211,102,.35);}.btn-wa:hover{background:#1ebe5a;transform:translateY(-2px);}
+    .btn-out{background:transparent;color:var(--dark);border:1.5px solid rgba(28,18,9,.25);}.btn-out:hover{border-color:var(--pr);color:var(--pr);}
+
+    /* HERO */
+    .hero-page{height:60vh;min-height:460px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(rgba(8,4,1,.48),rgba(8,4,1,.72)),url('https://images.unsplash.com/photo-1581349485608-9469926a8e5e?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;}
+    .hero-pg-cnt{position:relative;z-index:1;padding:100px 24px 60px;animation:fadeUp .9s ease both;}
+    .page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,168,83,.12);border:1px solid rgba(212,168,83,.28);color:var(--acc);padding:6px 20px;border-radius:50px;font-size:.76rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;}
+    .hero-pg-cnt h1{font-family:var(--ft);font-size:clamp(2.4rem,6vw,4.5rem);color:#fff;font-weight:700;margin-bottom:14px;}.hero-pg-cnt h1 em{font-style:italic;color:var(--acc);}
+    .hero-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--acc),transparent);margin:16px auto;}
+    .hero-pg-cnt p{font-size:1.05rem;color:rgba(255,255,255,.55);max-width:460px;margin:0 auto;}
+
+    /* SECTIONS */
+    section{padding:92px 24px;}.cnt{max-width:var(--mw);margin:0 auto;}
+    .sec-badge{display:inline-block;color:var(--pr);font-size:.76rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+    .sec-title{font-family:var(--ft);font-size:clamp(1.8rem,4vw,2.85rem);color:var(--dark);line-height:1.22;margin-bottom:14px;}.sec-title em{font-style:italic;color:var(--pr);}
+    .sec-sub{font-size:1.02rem;color:var(--txt-m);max-width:540px;line-height:1.82;}
+    .divider{width:48px;height:2px;background:linear-gradient(90deg,var(--pr),var(--acc));margin:14px 0;border-radius:2px;}.divider.c{margin:14px auto;}
+
+    /* STORY SPLIT */
+    .story{background:var(--light);}
+    .story-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+    .story-visual{position:relative;}
+    .story-photo{border-radius:var(--r);overflow:hidden;position:relative;}
+    .story-photo img{width:100%;height:480px;object-fit:cover;object-position:center;display:block;transition:transform .7s ease;}
+    .story-photo:hover img{transform:scale(1.03);}
+    .story-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,rgba(0,0,0,.1) 50%,transparent 100%);display:flex;align-items:flex-end;padding:28px;}
+    .story-photo-tag{background:var(--dark);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 18px;}
+    .story-photo-tag strong{display:block;font-family:var(--ft);font-size:1rem;color:#fff;margin-bottom:2px;}
+    .story-photo-tag span{font-size:.78rem;color:rgba(255,255,255,.55);}
+    .story-float{position:absolute;top:24px;right:-20px;background:#fff;border-radius:var(--r);padding:18px 22px;box-shadow:var(--sh-m);border:1px solid var(--border);}
+    .story-float strong{display:block;font-family:var(--ft);font-size:2.2rem;color:var(--pr);}
+    .story-float span{font-size:.8rem;color:var(--txt-m);font-weight:600;}
+    .story-text h2{font-family:var(--ft);font-size:clamp(1.8rem,4vw,2.8rem);color:var(--dark);line-height:1.25;margin-bottom:20px;}
+    .story-text h2 em{font-style:italic;color:var(--pr);}
+    .story-text p{font-size:1rem;color:var(--txt-m);line-height:1.85;margin-bottom:20px;}
+    .story-text p strong{color:var(--dark);font-weight:700;}
+
+    /* TIMELINE */
+    .timeline-sec{background:var(--cream);}
+    .timeline{position:relative;max-width:760px;margin:0 auto;}
+    .timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--pr),var(--acc));transform:translateX(-50%);}
+    .tl-item{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:56px;align-items:center;}
+    .tl-item:nth-child(even) .tl-content{order:-1;text-align:right;}
+    .tl-item:nth-child(even) .tl-year{text-align:left;}
+    .tl-year{font-family:var(--ft);font-size:2.8rem;font-weight:700;color:var(--pr);opacity:.35;line-height:1;}
+    .tl-content{background:#fff;border-radius:var(--r);padding:28px;box-shadow:var(--sh-s);border:1px solid var(--border);position:relative;}
+    .tl-content::before{content:'';position:absolute;top:50%;width:16px;height:16px;background:var(--pr);border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 3px var(--pr);transform:translateY(-50%);}
+    .tl-item:nth-child(odd) .tl-content::before{right:-48px;}
+    .tl-item:nth-child(even) .tl-content::before{left:-48px;}
+    .tl-content h4{font-family:var(--ft);font-size:1.1rem;color:var(--dark);margin-bottom:8px;}
+    .tl-content p{font-size:.88rem;color:var(--txt-m);line-height:1.7;}
+
+    /* VALUES */
+    .values{background:var(--light);}
+    .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+    .val-card{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-s);border:1px solid var(--border);transition:var(--ease);}
+    .val-card:hover{transform:translateY(-5px);box-shadow:var(--sh-m);}
+    .val-top{padding:36px 28px 28px;position:relative;overflow:hidden;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;}
+    .val-top::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.82) 0%,rgba(0,0,0,.4) 55%,rgba(0,0,0,.18) 100%);}
+    .val-top>*{position:relative;z-index:1;}
+    .val-icon{font-size:1.9rem;margin-bottom:14px;display:block;}
+    .val-top h3{font-family:var(--ft);font-size:1.28rem;color:#fff;margin-bottom:8px;}
+    .val-top p{font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.72;}
+    .val-bot{padding:22px 28px;background:#fff;border-top:3px solid var(--pr);}
+    .val-fact{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px;}
+    .val-fact-dot{width:6px;height:6px;border-radius:50%;background:var(--pr);flex-shrink:0;margin-top:7px;}
+    .val-fact p{font-size:.84rem;color:var(--txt-m);line-height:1.7;margin:0;}
+    .val-fact p strong{color:var(--dark);font-weight:700;}
+
+    /* TEAM */
+    .team-sec{background:var(--cream);}
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;}
+    .team-card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-s);border:1px solid var(--border);text-align:center;transition:var(--ease);}
+    .team-card:hover{transform:translateY(-5px);box-shadow:var(--sh-m);}
+    .team-avatar{height:160px;display:flex;align-items:center;justify-content:center;font-size:4rem;}
+    .ta1{background:linear-gradient(135deg,#3C1E08,#6E3A12);}
+    .ta2{background:linear-gradient(135deg,#1A2E20,#2A5038);}
+    .ta3{background:linear-gradient(135deg,#3C2A06,#6E4E0A);}
+    .ta4{background:linear-gradient(135deg,#1A1E3A,#2A3068);}
+    .team-info{padding:24px 20px;}
+    .team-info h3{font-family:var(--ft);font-size:1.1rem;color:var(--dark);margin-bottom:4px;}
+    .team-info .role{font-size:.8rem;font-weight:700;color:var(--pr);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;display:block;}
+    .team-info p{font-size:.85rem;color:var(--txt-m);line-height:1.65;}
+
+    /* TEAM photos */
+    .team-avatar{height:200px;overflow:hidden;}
+    .team-avatar img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .6s ease;}
+    .team-card:hover .team-avatar img{transform:scale(1.04);}
+
+    /* CTA */
+    .cta-sec{background:linear-gradient(rgba(8,4,1,.74),rgba(8,4,1,.84)),url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;text-align:center;padding:104px 24px;}
+    .cta-sec .sec-badge{color:var(--acc);}
+    .cta-sec h2{font-family:var(--ft);font-size:clamp(2rem,5vw,3.6rem);color:#fff;margin-bottom:16px;line-height:1.18;}.cta-sec h2 em{font-style:italic;color:var(--acc);}
+    .cta-sec p{font-size:1.05rem;color:rgba(255,255,255,.55);max-width:500px;margin:0 auto 44px;line-height:1.8;}
+    .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    .btn-out-w{background:transparent;color:#fff!important;border:1.5px solid rgba(255,255,255,.35);}.btn-out-w:hover{border-color:rgba(255,255,255,.7);background:rgba(255,255,255,.05);}
+
+    /* FOOTER */
+    footer{background:#110B05;color:rgba(255,255,255,.5);padding:68px 24px 32px;}
+    .ft-grid{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:32px;}
+    .ft-brand p{font-size:.875rem;line-height:1.82;max-width:255px;margin-bottom:22px;}
+    .socials{display:flex;gap:10px;}.soc{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:var(--ease);}.soc:hover{background:var(--pr);border-color:var(--pr);transform:translateY(-2px);}
+    .ft-col h4{font-family:var(--ft);font-size:1rem;color:rgba(255,255,255,.82);margin-bottom:20px;}.ft-col ul{list-style:none;}.ft-col li{margin-bottom:10px;}.ft-col li a{font-size:.875rem;color:rgba(255,255,255,.45);transition:var(--ease);}.ft-col li a:hover{color:var(--acc);}
+    .ft-bot{max-width:var(--mw);margin:0 auto;display:flex;justify-content:space-between;font-size:.8rem;flex-wrap:wrap;gap:10px;}
+    .wa-float{position:fixed;bottom:28px;right:28px;z-index:998;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+    .wa-bubble{background:#fff;color:var(--txt);padding:10px 16px;border-radius:12px 12px 0 12px;font-size:.84rem;font-weight:700;box-shadow:var(--sh-m);opacity:0;transform:translateY(6px) scale(.95);transition:var(--ease);white-space:nowrap;}.wa-float:hover .wa-bubble{opacity:1;transform:translateY(0) scale(1);}
+    .wa-btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:var(--ease);animation:pwa 2.5s infinite;}.wa-btn:hover{transform:scale(1.1);}.wa-btn svg{fill:#fff;}
+    .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}.rv.in{opacity:1;transform:translateY(0);}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes pwa{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4);}50%{box-shadow:0 4px 30px rgba(37,211,102,.65),0 0 0 12px rgba(37,211,102,.1);}}
+    @media(max-width:900px){.story-grid{grid-template-columns:1fr;gap:48px;}.values-grid{grid-template-columns:1fr 1fr;}.ft-grid{grid-template-columns:1fr 1fr;}.timeline::before{left:20px;}.tl-item{grid-template-columns:1fr;}.tl-item:nth-child(even) .tl-content{order:0;text-align:left;}.tl-item:nth-child(even) .tl-year{text-align:left;}.tl-content::before{display:none;}.tl-year{font-size:2rem;}}
+    @media(max-width:768px){nav{display:none;}.hamburger{display:flex;}.ft-grid{grid-template-columns:1fr;gap:32px;}.values-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div id="prog"></div>
+<header id="hdr">
+  <a href="index.html" class="logo">FE<b>V</b>A</a>
+  <nav>
+    <a href="index.html">Inicio</a><a href="carta.html">Carta</a><a href="galeria.html">Galería</a>
+    <a href="nosotros.html" class="active">Nosotros</a><a href="contacto.html">Contacto</a>
+    <a href="contacto.html" class="nav-cta">Reservar mesa</a>
+    <a href="tel:+34971234567" class="nav-phone">+34 971 234 567</a>
+  </nav>
+  <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+</header>
+<div class="mob-nav" id="mnav">
+  <a href="index.html">Inicio</a><a href="carta.html">Carta</a><a href="galeria.html">Galería</a>
+  <a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a>
+  <a href="contacto.html" style="color:var(--acc)!important;font-weight:700;">→ Reservar mesa</a>
+  <a href="tel:+34971234567">+34 971 234 567</a>
+</div>
+
+<div class="hero-page">
+  <div class="hero-pg-cnt">
+    <div class="page-badge">✦ Nuestra historia</div>
+    <h1>El alma de <em>Feva</em></h1>
+    <div class="hero-line"></div>
+    <p>Un mallorquín, una abuela, y la certeza de que la buena cocina no necesita inventarse — solo recordarse.</p>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story">
+  <div class="cnt">
+    <div class="story-grid">
+      <div class="story-visual rv">
+        <div class="story-photo">
+          <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&auto=format&fit=crop&q=80" alt="Marcos Ferrer, chef de Feva, en su cocina">
+          <div class="story-photo-overlay">
+            <div class="story-photo-tag">
+              <strong>Marcos Ferrer</strong>
+              <span>Chef y fundador · Palma, 1991</span>
+            </div>
+          </div>
+        </div>
+        <div class="story-float">
+          <strong>2019</strong>
+          <span>Año de apertura de Feva</span>
+        </div>
+      </div>
+      <div class="story-text rv">
+        <span class="sec-badge">Nuestra historia</span>
+        <h2>Nació de la cocina de <em>la abuela Margalida</em></h2>
+        <div class="divider"></div>
+        <p>Marcos Ferrer creció en el barrio del Born de Palma, entre el olor a sobrasada, el ruido de las ollas de barro y la música siempre encendida de la cocina de su abuela. Margalida cocinaba como se cocinaba antes: con paciencia, con producto real y con la certeza de que <strong>una buena comida es la mejor forma de decir te quiero.</strong></p>
+        <p>Con 18 años, Marcos salió de Mallorca para formarse. Pasó por restaurantes de Barcelona y Valencia, aprendió técnica, aprendió a trabajar bajo presión. Pero siempre volvía a los sabores de su isla, y siempre se preguntaba: <strong>¿por qué no existe un sitio así en Palma?</strong></p>
+        <p>En 2019, con 28 años, volvió a casa con una idea clara: abrir un restaurante pequeño, cercano, con producto de la isla y recetas de toda la vida. Sin pretensiones, sin fusiones innecesarias. Solo <strong>cocina mallorquina honesta</strong> y una mesa donde sentirse en familia.</p>
+        <p>Feva abrió sus puertas con 8 mesas. Hoy, cinco años después, es el rincón favorito de muchos palmesanos... y de los que vienen de fuera a descubrir la isla de verdad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-sec">
+  <div class="cnt">
+    <div class="sec-hd c rv" style="text-align:center;margin-bottom:60px;">
+      <span class="sec-badge">El camino hasta aquí</span>
+      <h2 class="sec-title" style="font-family:var(--ft);font-size:clamp(1.8rem,4vw,2.85rem);color:var(--dark);">Cinco años de <em style="font-style:italic;color:var(--pr)">historia</em></h2>
+      <div class="divider c"></div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item rv">
+        <div class="tl-year">1991</div>
+        <div class="tl-content">
+          <h4>Nace Marcos en Palma</h4>
+          <p>Crece en el Born, entre el mercado, la Catedral y la cocina de su abuela Margalida. Sus primeros recuerdos son el olor a frito mallorquín.</p>
+        </div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-content">
+          <h4>Formación en cocina</h4>
+          <p>Con 18 años se marcha a Barcelona a formarse en la Escola de Restauració. Trabaja en varios restaurantes de Barcelona y Valencia.</p>
+        </div>
+        <div class="tl-year">2009</div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-year">2017</div>
+        <div class="tl-content">
+          <h4>El regreso a la isla</h4>
+          <p>Vuelve a Mallorca con una idea fija: abrir su propio sitio. Pasa dos años perfeccionando sus recetas, visitando productores y buscando el local perfecto.</p>
+        </div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-content">
+          <h4>Abre Feva</h4>
+          <p>El 14 de marzo de 2019 abre Feva con 8 mesas, una carta de 12 platos y un sueño: que cada comensal se vaya sintiéndose como en casa.</p>
+        </div>
+        <div class="tl-year">2019</div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-year">2024</div>
+        <div class="tl-content">
+          <h4>Cinco años y más de 4.200 comensales</h4>
+          <p>Feva celebra su quinto aniversario con carta renovada, nuevos productores locales y el mismo espíritu de siempre: cocina honesta y trato de casa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALORES -->
+<section class="values">
+  <div class="cnt">
+    <div style="text-align:center;margin-bottom:56px;" class="rv">
+      <span class="sec-badge">Lo que nos mueve</span>
+      <h2 class="sec-title" style="font-family:var(--ft);font-size:clamp(1.8rem,4vw,2.85rem);color:var(--dark);">Nuestros <em style="font-style:italic;color:var(--pr)">valores</em></h2>
+      <div class="divider c"></div>
+    </div>
+    <div class="values-grid">
+      <div class="val-card rv">
+        <div class="val-top" style="background-image:url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=700&auto=format&fit=crop&q=80')">
+          <span class="val-icon">🌱</span>
+          <h3>Proximidad ante todo</h3>
+          <p>Cada mañana antes de abrir, Marcos llama a Can Biel, a la lonja o a las fincas de Llucmajor. Lo que llegue hoy, se cocina hoy.</p>
+        </div>
+        <div class="val-bot">
+          <div class="val-fact"><div class="val-fact-dot"></div><p><strong>+12 productores mallorquines</strong> — huerta de Can Biel, almendros de Son Ordines, fincas de Llucmajor.</p></div>
+          <div class="val-fact"><div class="val-fact-dot"></div><p>Si el tomate de la semana no es digno, ese día no hay tomate. Sin excepciones.</p></div>
+        </div>
+      </div>
+      <div class="val-card rv">
+        <div class="val-top" style="background-image:url('https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=700&auto=format&fit=crop&q=80')">
+          <span class="val-icon">🤝</span>
+          <h3>Trato humano</h3>
+          <p>En Feva no hay turnos de 90 minutos. Catalina recuerda cómo te gusta el punto de la carne y qué vino pediste la última vez.</p>
+        </div>
+        <div class="val-bot">
+          <div class="val-fact"><div class="val-fact-dot"></div><p>Mesa que entra, <strong>mesa que se queda</strong>. Nunca hemos apurado a un comensal para dar la vuelta al turno.</p></div>
+          <div class="val-fact"><div class="val-fact-dot"></div><p>Más del <strong>60 % de las reservas</strong> son de clientes que repiten. Eso no es casualidad.</p></div>
+        </div>
+      </div>
+      <div class="val-card rv">
+        <div class="val-top" style="background-image:url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=700&auto=format&fit=crop&q=80')">
+          <span class="val-icon">📖</span>
+          <h3>Honestidad en el plato</h3>
+          <p>Nuestra carta tiene 14 platos. Los que hay, están hechos con el mejor producto disponible. Nada más, nada menos.</p>
+        </div>
+        <div class="val-bot">
+          <div class="val-fact"><div class="val-fact-dot"></div><p><strong>Cero congelados</strong>. Si el producto no llega fresco ese día, ese plato no sale de la cocina.</p></div>
+          <div class="val-fact"><div class="val-fact-dot"></div><p>Preferimos <strong>14 platos perfectos</strong> a una carta de 40 opciones mediocres. La carta cambia según la temporada.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="team-sec">
+  <div class="cnt">
+    <div style="text-align:center;margin-bottom:56px;" class="rv">
+      <span class="sec-badge">Las personas de Feva</span>
+      <h2 class="sec-title" style="font-family:var(--ft);font-size:clamp(1.8rem,4vw,2.85rem);color:var(--dark);">El equipo que hace <em style="font-style:italic;color:var(--pr)">la magia</em></h2>
+      <div class="divider c"></div>
+    </div>
+    <div class="team-grid">
+      <div class="team-card rv">
+        <div class="team-avatar">
+          <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&auto=format&fit=crop&q=80" alt="Marcos Ferrer, chef de Feva">
+        </div>
+        <div class="team-info">
+          <h3>Marcos Ferrer</h3>
+          <span class="role">Chef y fundador</span>
+          <p>Palma, 1991. Cocinero de vocación, mallorquín de alma. En la cocina desde los 8 años al lado de su abuela Margalida.</p>
+        </div>
+      </div>
+      <div class="team-card rv">
+        <div class="team-avatar">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80" alt="Catalina Rosselló, jefa de sala de Feva">
+        </div>
+        <div class="team-info">
+          <h3>Catalina Rosselló</h3>
+          <span class="role">Jefa de sala</span>
+          <p>20 años de hostelería mallorquina. Con Catalina al frente, cada mesa se siente como la más importante del local.</p>
+        </div>
+      </div>
+      <div class="team-card rv">
+        <div class="team-avatar">
+          <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&auto=format&fit=crop&q=80" alt="Toni Perelló, sumiller de Feva">
+        </div>
+        <div class="team-info">
+          <h3>Toni Perelló</h3>
+          <span class="role">Sumiller</span>
+          <p>Conoce cada bodega de Mallorca. Especialista en D.O. Binissalem y Pla i Llevant — los grandes vinos de la isla.</p>
+        </div>
+      </div>
+      <div class="team-card rv">
+        <div class="team-avatar">
+          <img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=400&auto=format&fit=crop&q=80" alt="Joan Mas, sous-chef de Feva">
+        </div>
+        <div class="team-info">
+          <h3>Joan Mas</h3>
+          <span class="role">Sous-chef</span>
+          <p>El brazo derecho de Marcos. Especialista en pescados de lonja y en los guisos de temporada de la isla.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cnt">
+    <span class="sec-badge">Ven a conocernos</span>
+    <h2>Ahora que nos conoces,<br><em>ven a comer con nosotros</em></h2>
+    <p>La mejor forma de entender Feva es vivirla. Una mesa, un vino de Binissalem y una conversación entre personas. Eso somos.</p>
+    <div class="cta-btns">
+      <a href="contacto.html" class="btn btn-pr">Reservar mesa →</a>
+      <a href="carta.html" class="btn btn-out-w">Ver nuestra carta</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <a href="index.html" class="logo" style="margin-bottom:16px;display:block;">FE<b>V</b>A</a>
+      <p>Cocina mallorquina de proximidad en el corazón del Born de Palma.</p>
+      <div class="socials">
+        <a href="https://instagram.com" target="_blank" class="soc">📸</a>
+        <a href="https://facebook.com" target="_blank" class="soc">📘</a>
+        <a href="https://wa.me/34971234567" target="_blank" class="soc">💬</a>
+      </div>
+    </div>
+    <div class="ft-col"><h4>Páginas</h4><ul>
+      <li><a href="index.html">Inicio</a></li><li><a href="carta.html">Nuestra carta</a></li>
+      <li><a href="galeria.html">Galería</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Horarios</h4><ul>
+      <li><a>Lunes: Cerrado</a></li><li><a>Mar–Vie: 13:00–16:00</a></li>
+      <li><a>Mar–Vie: 20:00–23:30</a></li><li><a>Sábado: 13:00–00:00</a></li><li><a>Domingo: 13:00–16:30</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Contacto</h4><ul>
+      <li><a href="tel:+34971234567">+34 971 234 567</a></li>
+      <li><a href="mailto:hola@fevamallorca.com">hola@fevamallorca.com</a></li>
+      <li><a href="contacto.html">Carrer del Born, 14</a></li>
+      <li><a href="contacto.html">07001 Palma, Mallorca</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bot"><span>© 2024 Feva Mallorca · Todos los derechos reservados</span><span>Hecho con ❤️ en Palma de Mallorca</span></div>
+</footer>
+
+<div class="wa-float">
+  <div class="wa-bubble">¡Reserva tu mesa! 🍽️</div>
+  <a href="https://wa.me/34971234567?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Feva" target="_blank" class="wa-btn">
+    <svg width="28" height="28" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+  window.addEventListener('scroll',()=>{const s=document.documentElement,t=s.scrollTop,h=s.scrollHeight-window.innerHeight;document.getElementById('prog').style.width=(t/h*100)+'%';});
+  const hdr=document.getElementById('hdr');window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>50));
+  const hbg=document.getElementById('hbg'),mnav=document.getElementById('mnav');hbg.addEventListener('click',()=>{hbg.classList.toggle('open');mnav.classList.toggle('open');});
+  const obs=new IntersectionObserver((es)=>es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*70);obs.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

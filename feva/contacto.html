@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto y Reservas — Feva | Palma, Mallorca</title>
+  <meta name="description" content="Reserva tu mesa en Feva, Palma de Mallorca. Carrer del Born, 14. Llámanos o escríbenos por WhatsApp.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--pr:#C4614A;--pr-d:#A34D3A;--sec:#2C4A2E;--acc:#D4A853;--dark:#1C1209;--cream:#F7F2EB;--light:#FEFCF9;--txt:#3A3330;--txt-m:#7A6E68;--border:rgba(196,97,74,.15);--ft:'Playfair Display',Georgia,serif;--fb:'Nunito',sans-serif;--sh-s:0 2px 8px rgba(28,18,9,.08);--sh-m:0 4px 24px rgba(28,18,9,.12);--r:14px;--ease:.3s cubic-bezier(.4,0,.2,1);--mw:1160px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{font-family:var(--fb);color:var(--txt);background:var(--light);line-height:1.7;overflow-x:hidden;}a{text-decoration:none;color:inherit;}
+    #prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--pr),var(--acc));z-index:9999;transition:width .1s;}
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:var(--ease);}
+    header.scrolled{background:rgba(28,18,9,.97);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(0,0,0,.3);}
+    .logo{font-family:var(--ft);font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:5px;text-transform:uppercase;}.logo b{color:var(--acc);}
+    nav{display:flex;align-items:center;gap:28px;}nav a{color:rgba(255,255,255,.8);font-size:.82rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;transition:var(--ease);position:relative;}
+    nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--acc);transition:var(--ease);}nav a:hover,nav a.active{color:#fff;}nav a:hover::after,nav a.active::after{width:100%;}
+    .nav-cta{background:var(--pr)!important;color:#fff!important;padding:9px 22px;border-radius:50px;font-weight:700!important;}.nav-cta::after{display:none!important;}.nav-cta:hover{background:var(--pr-d)!important;transform:translateY(-1px);}
+    .nav-phone{color:rgba(255,255,255,.55)!important;font-size:.75rem!important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:var(--ease);}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}.hamburger.open span:nth-child(2){opacity:0;}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+    .mob-nav{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(28,18,9,.98);backdrop-filter:blur(16px);padding:24px 32px;flex-direction:column;gap:0;z-index:999;border-top:1px solid rgba(255,255,255,.08);}.mob-nav.open{display:flex;}.mob-nav a{color:rgba(255,255,255,.8);font-size:.95rem;font-weight:500;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-weight:700;font-size:.95rem;transition:var(--ease);cursor:pointer;border:none;font-family:var(--fb);}
+    .btn-pr{background:var(--pr);color:#fff;box-shadow:0 4px 20px rgba(196,97,74,.4);}.btn-pr:hover{background:var(--pr-d);transform:translateY(-2px);}
+    .btn-wa{background:#25D366;color:#fff;box-shadow:0 4px 20px rgba(37,211,102,.35);}.btn-wa:hover{background:#1ebe5a;transform:translateY(-2px);}
+
+    /* HERO */
+    .hero-page{height:52vh;min-height:380px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(rgba(8,4,1,.55),rgba(8,4,1,.76)),url('https://images.unsplash.com/photo-1424847651672-bf20a4b0982b?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;}
+    .hero-pg-cnt{position:relative;z-index:1;padding:100px 24px 60px;animation:fadeUp .9s ease both;}
+    .page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,168,83,.12);border:1px solid rgba(212,168,83,.28);color:var(--acc);padding:6px 20px;border-radius:50px;font-size:.76rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;}
+    .hero-pg-cnt h1{font-family:var(--ft);font-size:clamp(2.4rem,6vw,4.5rem);color:#fff;font-weight:700;margin-bottom:14px;}.hero-pg-cnt h1 em{font-style:italic;color:var(--acc);}
+    .hero-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--acc),transparent);margin:16px auto;}
+    .hero-pg-cnt p{font-size:1.05rem;color:rgba(255,255,255,.55);max-width:460px;margin:0 auto;}
+
+    /* CONTACT SECTION */
+    .contact-sec{padding:92px 24px;background:var(--light);}
+    .cnt{max-width:var(--mw);margin:0 auto;}
+    .contact-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start;}
+
+    /* LEFT: Info */
+    .contact-info{}
+    .sec-badge{display:inline-block;color:var(--pr);font-size:.76rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;}
+    .ci-title{font-family:var(--ft);font-size:2.2rem;color:var(--dark);margin-bottom:14px;line-height:1.22;}.ci-title em{font-style:italic;color:var(--pr);}
+    .divider{width:48px;height:2px;background:linear-gradient(90deg,var(--pr),var(--acc));margin:14px 0;border-radius:2px;}
+    .ci-lead{font-size:1rem;color:var(--txt-m);line-height:1.82;margin-bottom:32px;}
+    .info-cards{display:flex;flex-direction:column;gap:14px;margin-bottom:32px;}
+    .info-card{display:flex;align-items:center;gap:16px;background:var(--cream);border:1px solid var(--border);border-radius:12px;padding:16px 20px;transition:var(--ease);}
+    .info-card:hover{background:#fff;box-shadow:var(--sh-s);border-color:rgba(196,97,74,.3);}
+    .ic-icon{font-size:1.4rem;flex-shrink:0;}
+    .ic-body strong{display:block;font-size:.82rem;font-weight:700;color:var(--txt-m);letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px;}
+    .ic-body a,.ic-body span{font-size:.95rem;color:var(--dark);font-weight:600;}
+    .ic-body a:hover{color:var(--pr);}
+    .wa-direct{display:flex;align-items:center;gap:12px;background:#25D366;color:#fff;border-radius:12px;padding:18px 24px;font-weight:700;font-size:1rem;transition:var(--ease);}
+    .wa-direct:hover{background:#1ebe5a;transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,211,102,.4);}
+    .wa-direct svg{fill:#fff;flex-shrink:0;}
+
+    /* RIGHT: Form */
+    .contact-form-wrap{background:#fff;border-radius:var(--r);padding:40px;box-shadow:var(--sh-m);border:1px solid var(--border);}
+    .form-title{font-family:var(--ft);font-size:1.6rem;color:var(--dark);margin-bottom:6px;}
+    .form-sub{font-size:.9rem;color:var(--txt-m);margin-bottom:28px;}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .form-group{display:flex;flex-direction:column;gap:6px;}
+    .form-group.full{grid-column:1/-1;}
+    label{font-size:.82rem;font-weight:700;color:var(--txt);letter-spacing:.3px;}
+    input,textarea,select{width:100%;padding:12px 16px;border:1.5px solid rgba(196,97,74,.2);border-radius:10px;font-family:var(--fb);font-size:.95rem;color:var(--txt);background:var(--cream);transition:var(--ease);outline:none;-webkit-appearance:none;appearance:none;}
+    input:focus,textarea:focus,select:focus{border-color:var(--pr);background:#fff;box-shadow:0 0 0 3px rgba(196,97,74,.1);}
+    textarea{resize:vertical;min-height:110px;}
+    select option{background:#fff;}
+    .form-submit{width:100%;padding:15px;background:var(--pr);color:#fff;border:none;border-radius:50px;font-family:var(--fb);font-size:1rem;font-weight:700;cursor:pointer;transition:var(--ease);margin-top:8px;}
+    .form-submit:hover{background:var(--pr-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(196,97,74,.4);}
+    .form-note{font-size:.8rem;color:var(--txt-m);text-align:center;margin-top:12px;}
+    .success-msg{display:none;background:rgba(44,74,46,.1);border:1px solid rgba(44,74,46,.3);border-radius:10px;padding:16px 20px;color:var(--sec);font-weight:600;font-size:.95rem;margin-top:16px;text-align:center;}
+
+    /* MAP */
+    .map-sec{padding:0 24px 92px;background:var(--light);}
+    .map-wrap{border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-m);}
+    .map-wrap iframe{display:block;width:100%;height:420px;border:none;}
+
+    /* HORARIOS */
+    .hor-sec{padding:92px 24px;background:var(--cream);}
+    .hor-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;}
+    .hor-card{background:#fff;border-radius:var(--r);padding:28px;box-shadow:var(--sh-s);border:1px solid var(--border);}
+    .hor-card h4{font-family:var(--ft);font-size:1.1rem;color:var(--dark);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+    .sch-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);}
+    .sch-row:last-child{border:none;}
+    .sch-day{font-size:.875rem;color:var(--txt-m);}.sch-time{font-size:.875rem;font-weight:600;color:var(--dark);}.sch-time.cl{color:var(--pr);font-style:italic;}
+
+    /* FAQ */
+    .faq-sec{padding:92px 24px;background:var(--light);}
+    .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:0 auto;}
+    .faq-item{background:#fff;border-radius:var(--r);padding:28px;box-shadow:var(--sh-s);border:1px solid var(--border);}
+    .faq-item h4{font-family:var(--ft);font-size:1rem;color:var(--dark);margin-bottom:8px;display:flex;align-items:flex-start;gap:10px;}
+    .faq-item h4::before{content:'?';min-width:26px;height:26px;background:linear-gradient(135deg,var(--pr),var(--pr-d));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;font-family:var(--fb);flex-shrink:0;}
+    .faq-item p{font-size:.875rem;color:var(--txt-m);line-height:1.72;}
+
+    /* FOOTER */
+    footer{background:#110B05;color:rgba(255,255,255,.5);padding:68px 24px 32px;}
+    .ft-grid{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:32px;}
+    .ft-brand p{font-size:.875rem;line-height:1.82;max-width:255px;margin-bottom:22px;}
+    .socials{display:flex;gap:10px;}.soc{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:var(--ease);}.soc:hover{background:var(--pr);border-color:var(--pr);transform:translateY(-2px);}
+    .ft-col h4{font-family:var(--ft);font-size:1rem;color:rgba(255,255,255,.82);margin-bottom:20px;}.ft-col ul{list-style:none;}.ft-col li{margin-bottom:10px;}.ft-col li a{font-size:.875rem;color:rgba(255,255,255,.45);transition:var(--ease);}.ft-col li a:hover{color:var(--acc);}
+    .ft-bot{max-width:var(--mw);margin:0 auto;display:flex;justify-content:space-between;font-size:.8rem;flex-wrap:wrap;gap:10px;}
+    .wa-float{position:fixed;bottom:28px;right:28px;z-index:998;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+    .wa-bubble{background:#fff;color:var(--txt);padding:10px 16px;border-radius:12px 12px 0 12px;font-size:.84rem;font-weight:700;box-shadow:var(--sh-m);opacity:0;transform:translateY(6px) scale(.95);transition:var(--ease);white-space:nowrap;}.wa-float:hover .wa-bubble{opacity:1;transform:translateY(0) scale(1);}
+    .wa-btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:var(--ease);animation:pwa 2.5s infinite;}.wa-btn:hover{transform:scale(1.1);}.wa-btn svg{fill:#fff;}
+    .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}.rv.in{opacity:1;transform:translateY(0);}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes pwa{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4);}50%{box-shadow:0 4px 30px rgba(37,211,102,.65),0 0 0 12px rgba(37,211,102,.1);}}
+    @media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:40px;}.faq-grid{grid-template-columns:1fr;}.ft-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:768px){nav{display:none;}.hamburger{display:flex;}.form-grid{grid-template-columns:1fr;}.ft-grid{grid-template-columns:1fr;gap:32px;}}
+  </style>
+</head>
+<body>
+<div id="prog"></div>
+<header id="hdr">
+  <a href="index.html" class="logo">FE<b>V</b>A</a>
+  <nav>
+    <a href="index.html">Inicio</a><a href="carta.html">Carta</a><a href="galeria.html">Galería</a>
+    <a href="nosotros.html">Nosotros</a><a href="contacto.html" class="active">Contacto</a>
+    <a href="#reserva-form" class="nav-cta">Reservar mesa</a>
+    <a href="tel:+34971234567" class="nav-phone">+34 971 234 567</a>
+  </nav>
+  <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+</header>
+<div class="mob-nav" id="mnav">
+  <a href="index.html">Inicio</a><a href="carta.html">Carta</a><a href="galeria.html">Galería</a>
+  <a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a>
+  <a href="tel:+34971234567">+34 971 234 567</a>
+</div>
+
+<div class="hero-page">
+  <div class="hero-pg-cnt">
+    <div class="page-badge">✦ Reservas y contacto</div>
+    <h1>Reserva tu <em>mesa</em></h1>
+    <div class="hero-line"></div>
+    <p>Llámanos, escríbenos o rellena el formulario. Te respondemos en menos de dos horas.</p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-sec">
+  <div class="cnt">
+    <div class="contact-grid">
+
+      <!-- INFO -->
+      <div class="contact-info rv">
+        <span class="sec-badge">Estamos aquí para ti</span>
+        <h2 class="ci-title">¿Hablamos y <em>reservamos</em>?</h2>
+        <div class="divider"></div>
+        <p class="ci-lead">La forma más rápida de reservar es por WhatsApp. Pero si prefieres el formulario o el teléfono, también estamos. Como en casa.</p>
+
+        <div class="info-cards">
+          <div class="info-card">
+            <span class="ic-icon">📍</span>
+            <div class="ic-body"><strong>Dirección</strong><span>Carrer del Born, 14 · 07001 Palma, Mallorca</span></div>
+          </div>
+          <div class="info-card">
+            <span class="ic-icon">🕐</span>
+            <div class="ic-body"><strong>Horario de reservas</strong><span>Lunes a Sábado · 10:00–22:00</span></div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/34971234567?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Feva" target="_blank" class="wa-direct">
+          <svg width="24" height="24" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <div><strong>Reservar por WhatsApp</strong><br><span style="font-size:.82rem;opacity:.85;">La forma más rápida · Respuesta inmediata</span></div>
+        </a>
+      </div>
+
+      <!-- FORM -->
+      <div class="contact-form-wrap rv">
+        <h3 class="form-title">Reservar mesa</h3>
+        <p class="form-sub">Rellena el formulario y te confirmamos la reserva en menos de 2 horas.</p>
+        <form id="reserva-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nombre">Nombre *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono *</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+34 600 000 000" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email *</label>
+              <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="personas">Número de personas *</label>
+              <select id="personas" name="personas" required>
+                <option value="">Seleccionar</option>
+                <option>1 persona</option>
+                <option>2 personas</option>
+                <option>3 personas</option>
+                <option>4 personas</option>
+                <option>5 personas</option>
+                <option>6 personas</option>
+                <option>7+ personas (grupo)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fecha">Fecha *</label>
+              <input type="date" id="fecha" name="fecha" required>
+            </div>
+            <div class="form-group">
+              <label for="turno">Turno *</label>
+              <select id="turno" name="turno" required>
+                <option value="">Seleccionar</option>
+                <option>Mediodía (13:00–16:00)</option>
+                <option>Noche (20:00–23:30)</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label for="mensaje">¿Alguna petición especial?</label>
+              <textarea id="mensaje" name="mensaje" placeholder="Alergias, cumpleaños, zona preferida del local..."></textarea>
+            </div>
+          </div>
+          <button type="submit" class="form-submit">Enviar reserva →</button>
+          <p class="form-note">Te confirmaremos la reserva por teléfono o email en menos de 2 horas.</p>
+          <div class="success-msg" id="success-msg">✅ ¡Reserva recibida! Te contactaremos pronto para confirmarla. ¡Hasta pronto en Feva!</div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-sec">
+  <div class="cnt">
+    <div class="map-wrap rv">
+      <iframe src="https://maps.google.com/maps?q=Carrer+del+Born,+Palma+de+Mallorca&output=embed" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Feva en Palma, Mallorca"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section class="hor-sec">
+  <div class="cnt">
+    <div style="text-align:center;margin-bottom:48px;" class="rv">
+      <span class="sec-badge">Cuándo vernos</span>
+      <h2 style="font-family:var(--ft);font-size:clamp(1.8rem,4vw,2.85rem);color:var(--dark);margin-bottom:14px;">Horarios de <em style="font-style:italic;color:var(--pr)">apertura</em></h2>
+      <div style="width:48px;height:2px;background:linear-gradient(90deg,var(--pr),var(--acc));margin:14px auto;border-radius:2px;"></div>
+    </div>
+    <div class="hor-grid">
+      <div class="hor-card rv">
+        <h4>🌞 Mediodía</h4>
+        <div class="sch-row"><span class="sch-day">Lunes</span><span class="sch-time cl">Cerrado</span></div>
+        <div class="sch-row"><span class="sch-day">Mar–Vie</span><span class="sch-time">13:00 – 16:00</span></div>
+        <div class="sch-row"><span class="sch-day">Sábado</span><span class="sch-time">13:00 – 16:30</span></div>
+        <div class="sch-row"><span class="sch-day">Domingo</span><span class="sch-time">13:00 – 16:30</span></div>
+      </div>
+      <div class="hor-card rv">
+        <h4>🌙 Noche</h4>
+        <div class="sch-row"><span class="sch-day">Lunes</span><span class="sch-time cl">Cerrado</span></div>
+        <div class="sch-row"><span class="sch-day">Mar–Vie</span><span class="sch-time">20:00 – 23:30</span></div>
+        <div class="sch-row"><span class="sch-day">Sábado</span><span class="sch-time">20:00 – 00:00</span></div>
+        <div class="sch-row"><span class="sch-day">Domingo</span><span class="sch-time cl">Cerrado noche</span></div>
+      </div>
+      <div class="hor-card rv" style="background:var(--dark);border-color:rgba(255,255,255,.08);">
+        <h4 style="color:#fff;">📞 Reservas</h4>
+        <div class="sch-row" style="border-color:rgba(255,255,255,.07);"><span class="sch-day" style="color:rgba(255,255,255,.55);">Lun–Sáb</span><span class="sch-time" style="color:#fff;">10:00 – 22:00</span></div>
+        <div class="sch-row" style="border-color:rgba(255,255,255,.07);"><span class="sch-day" style="color:rgba(255,255,255,.55);">WhatsApp</span><span class="sch-time" style="color:var(--acc);">24 horas</span></div>
+        <div style="margin-top:16px;"><a href="https://wa.me/34971234567?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Feva" target="_blank" class="btn btn-wa" style="width:100%;justify-content:center;">Reservar ahora</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec">
+  <div class="cnt">
+    <div style="text-align:center;margin-bottom:48px;" class="rv">
+      <span class="sec-badge">Preguntas frecuentes</span>
+      <h2 style="font-family:var(--ft);font-size:clamp(1.8rem,4vw,2.85rem);color:var(--dark);margin-bottom:14px;">Todo lo que <em style="font-style:italic;color:var(--pr)">necesitas saber</em></h2>
+      <div style="width:48px;height:2px;background:linear-gradient(90deg,var(--pr),var(--acc));margin:14px auto;border-radius:2px;"></div>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item rv">
+        <h4>¿Es necesario reservar?</h4>
+        <p>Recomendamos reservar, especialmente fines de semana. Aceptamos sin reserva si hay mesa disponible, pero no podemos garantizarlo.</p>
+      </div>
+      <div class="faq-item rv">
+        <h4>¿Tienen menú del día?</h4>
+        <p>Sí. De martes a viernes al mediodía ofrecemos un menú del día con entrante, principal, postre y bebida por 18 €.</p>
+      </div>
+      <div class="faq-item rv">
+        <h4>¿Tenéis opciones vegetarianas?</h4>
+        <p>Sí, varios platos de la carta son vegetarianos y siempre podemos adaptar opciones. Consúltanos al reservar.</p>
+      </div>
+      <div class="faq-item rv">
+        <h4>¿Podéis celebrar eventos privados?</h4>
+        <p>Sí. Para grupos de 10 o más personas ofrecemos la posibilidad de reservar el local en exclusiva. Escríbenos para más info.</p>
+      </div>
+      <div class="faq-item rv">
+        <h4>¿Admitís mascotas?</h4>
+        <p>Las mascotas son bienvenidas en nuestra terraza exterior. En el interior, por normativa, no está permitido.</p>
+      </div>
+      <div class="faq-item rv">
+        <h4>¿Dónde aparcar?</h4>
+        <p>El parking más cercano es el de l'Avinguda d'Antoni Maura, a 5 minutos a pie. También hay zona azul en las calles adyacentes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <a href="index.html" class="logo" style="margin-bottom:16px;display:block;">FE<b>V</b>A</a>
+      <p>Cocina mallorquina de proximidad en el corazón del Born de Palma.</p>
+      <div class="socials">
+        <a href="https://instagram.com" target="_blank" class="soc">📸</a>
+        <a href="https://facebook.com" target="_blank" class="soc">📘</a>
+        <a href="https://wa.me/34971234567" target="_blank" class="soc">💬</a>
+      </div>
+    </div>
+    <div class="ft-col"><h4>Páginas</h4><ul>
+      <li><a href="index.html">Inicio</a></li><li><a href="carta.html">Nuestra carta</a></li>
+      <li><a href="galeria.html">Galería</a></li><li><a href="nosotros.html">Nosotros</a></li><li><a href="contacto.html">Contacto</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Horarios</h4><ul>
+      <li><a>Lunes: Cerrado</a></li><li><a>Mar–Vie: 13:00–16:00</a></li>
+      <li><a>Mar–Vie: 20:00–23:30</a></li><li><a>Sábado: 13:00–00:00</a></li><li><a>Domingo: 13:00–16:30</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Contacto</h4><ul>
+      <li><a href="tel:+34971234567">+34 971 234 567</a></li>
+      <li><a href="mailto:hola@fevamallorca.com">hola@fevamallorca.com</a></li>
+      <li><a href="contacto.html">Carrer del Born, 14</a></li>
+      <li><a href="contacto.html">07001 Palma, Mallorca</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bot"><span>© 2024 Feva Mallorca · Todos los derechos reservados</span><span>Hecho con ❤️ en Palma de Mallorca</span></div>
+</footer>
+
+<div class="wa-float">
+  <div class="wa-bubble">¡Reserva tu mesa! 🍽️</div>
+  <a href="https://wa.me/34971234567?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Feva" target="_blank" class="wa-btn">
+    <svg width="28" height="28" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<script>
+  window.addEventListener('scroll',()=>{const s=document.documentElement,t=s.scrollTop,h=s.scrollHeight-window.innerHeight;document.getElementById('prog').style.width=(t/h*100)+'%';});
+  const hdr=document.getElementById('hdr');window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>50));
+  const hbg=document.getElementById('hbg'),mnav=document.getElementById('mnav');hbg.addEventListener('click',()=>{hbg.classList.toggle('open');mnav.classList.toggle('open');});
+  // Form
+  document.getElementById('reserva-form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const msg=document.getElementById('success-msg');
+    msg.style.display='block';
+    e.target.querySelectorAll('input,textarea,select,button').forEach(el=>el.disabled=true);
+    msg.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  // Set min date to today
+  document.getElementById('fecha').min=new Date().toISOString().split('T')[0];
+  const obs=new IntersectionObserver((es)=>es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*70);obs.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
