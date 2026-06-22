@@ -637,6 +637,7 @@
   video.pause(); video.currentTime = 0;
   let ready = false;
   video.addEventListener('loadedmetadata', () => { ready = true; });
+  video.addEventListener('ended', () => { video.pause(); });
   video.load();
 
   function ease(t) { return t < .5 ? 2*t*t : -1+(4-2*t)*t; }
@@ -651,7 +652,8 @@
     if (progressFill) progressFill.style.width = (p * 100) + '%';
 
     // Video avanza durante todo el scroll (0–100%)
-    video.currentTime = p * video.duration;
+    // Cap a duration-0.001 para evitar estado 'ended' que bloquea seeks al volver arriba
+    video.currentTime = Math.min(p * video.duration, video.duration - 0.001);
 
     // Hero overlay: visible al inicio, desaparece entre 0.40–0.54
     if (heroOverlay) heroOverlay.style.opacity = 1 - phase(p, 0.40, 0.54);
