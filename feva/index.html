@@ -97,8 +97,25 @@
     .wsc { opacity: 0; transform: translateY(48px); will-change: opacity, transform; }
     .scroll-progress-bar { position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: rgba(255,255,255,.15); z-index: 4; }
     .scroll-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--pr), var(--acc)); transition: width .05s linear; }
-    @media (max-width: 768px) { .scroll-video-hero { height: 100vh !important; } .scroll-video-sticky { position: relative; } }
-    @media (prefers-reduced-motion: reduce) { .scroll-video-hero { height: 100vh !important; } }
+    @media (max-width: 768px) {
+      .scroll-video-hero { height: auto !important; }
+      .scroll-video-sticky { position: relative !important; height: auto !important; display: flex; flex-direction: column; }
+      .scroll-video-sticky video { display: none; }
+      .hero-overlay {
+        position: relative !important; min-height: 100vh;
+        background: linear-gradient(rgba(8,4,1,.55), rgba(8,4,1,.75)),
+          url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&auto=format&fit=crop&q=80')
+          center/cover no-repeat;
+      }
+      .why-scroll-overlay {
+        position: relative !important; opacity: 1 !important; pointer-events: auto !important;
+        padding: 64px 20px 56px;
+      }
+      .why-scroll-header { opacity: 1 !important; transform: none !important; }
+      .wsc { opacity: 1 !important; transform: none !important; }
+      .scroll-progress-bar { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) { .scroll-video-hero { height: auto !important; } }
 
     /* ── HERO CONTENT ── */
     .hero-content { position: relative; z-index: 1; max-width: 780px; padding: 130px 24px 90px; animation: fadeUp 1.1s ease both; }
@@ -628,10 +645,7 @@
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (isMobile || prefersReduced) {
-    video.autoplay = true; video.loop = true; video.play().catch(() => {});
-    if (whyOverlay) { whyOverlay.style.opacity = '1'; whyOverlay.style.position = 'relative'; }
-    whyCards.forEach(c => { c.style.opacity = '1'; c.style.transform = 'none'; });
-    return;
+    return; // CSS mobile media query gestiona el layout
   }
 
   video.pause(); video.currentTime = 0;
