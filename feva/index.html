@@ -650,8 +650,8 @@
 
     if (progressFill) progressFill.style.width = (p * 100) + '%';
 
-    // Fase 1 (0–0.50): video avanza
-    video.currentTime = phase(p, 0, 0.50) * video.duration;
+    // Video avanza durante todo el scroll (0–100%)
+    video.currentTime = p * video.duration;
 
     // Hero overlay: visible al inicio, desaparece entre 0.40–0.54
     if (heroOverlay) heroOverlay.style.opacity = 1 - phase(p, 0.40, 0.54);
