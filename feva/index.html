@@ -63,7 +63,7 @@
     .btn-dark:hover { background: #2E1E10; transform: translateY(-2px); }
 
     /* ── SCROLL VIDEO HERO ── */
-    .scroll-video-hero { height: 200vh; position: relative; padding: 0 !important; }
+    .scroll-video-hero { height: 500vh; position: relative; padding: 0 !important; }
     .scroll-video-sticky {
       position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden;
       background: linear-gradient(rgba(8,4,1,.5), rgba(8,4,1,.78)),
@@ -78,7 +78,24 @@
       background: linear-gradient(rgba(8,4,1,.45), rgba(8,4,1,.72));
       text-align: center;
     }
-    .scroll-progress-bar { position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: rgba(255,255,255,.15); z-index: 3; }
+    /* ── WHY SCROLL OVERLAY ── */
+    .why-scroll-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 3;
+      background: linear-gradient(rgba(8,4,1,.78), rgba(8,4,1,.92));
+      opacity: 0; pointer-events: none;
+      padding: 80px 24px 24px;
+    }
+    .why-scroll-overlay.active { pointer-events: auto; }
+    .why-scroll-header { text-align: center; margin-bottom: 40px; opacity: 0; transform: translateY(22px); }
+    .why-scroll-header .sec-badge { color: var(--acc); }
+    .why-scroll-header .sec-badge::before, .why-scroll-header .sec-badge::after { background: var(--acc); }
+    .why-scroll-header h2 { font-family: var(--ft); font-size: clamp(2rem,4.5vw,3rem); color: #fff; line-height: 1.2; margin-bottom: 8px; }
+    .why-scroll-header h2 em { font-style: italic; color: var(--pr); }
+    .why-scroll-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 16px; max-width: var(--mw); width: 100%; }
+    .wsc { opacity: 0; transform: translateY(48px); will-change: opacity, transform; }
+    .scroll-progress-bar { position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: rgba(255,255,255,.15); z-index: 4; }
     .scroll-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--pr), var(--acc)); transition: width .05s linear; }
     @media (max-width: 768px) { .scroll-video-hero { height: 100vh !important; } .scroll-video-sticky { position: relative; } }
     @media (prefers-reduced-motion: reduce) { .scroll-video-hero { height: 100vh !important; } }
@@ -140,18 +157,6 @@
     .why-card h3 { font-family: var(--ft); font-size: 1.12rem; color: var(--dark); margin-bottom: 8px; }
     .why-card p { font-size: .87rem; color: var(--txt-m); line-height: 1.75; }
 
-    /* ── FLOAT-IN CARDS ── */
-    .float-card { opacity: 0; transform: translateY(52px) scale(.97); }
-    .float-card.in { animation: floatIn .75s cubic-bezier(.22,.61,.36,1) forwards; }
-    .float-card:nth-child(1).in { animation-delay: 0s; }
-    .float-card:nth-child(2).in { animation-delay: .13s; }
-    .float-card:nth-child(3).in { animation-delay: .26s; }
-    .float-card:nth-child(4).in { animation-delay: .39s; }
-    @keyframes floatIn {
-      0%   { opacity: 0; transform: translateY(52px) scale(.97); }
-      60%  { opacity: 1; transform: translateY(-8px) scale(1.01); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
 
     /* ── SIGNATURE SPLIT ── */
     .signature { padding: 0; background: var(--light); }
@@ -330,7 +335,7 @@
       muted
       preload="auto"
     ></video>
-    <div class="hero-overlay">
+    <div class="hero-overlay" id="heroOverlay">
       <div class="hero-content">
         <div class="hero-orn">
           <span></span>
@@ -348,42 +353,37 @@
       </div>
       <div class="scroll-hint"><span>Descubre</span></div>
     </div>
+    <div class="why-scroll-overlay" id="whyOverlay">
+      <div class="why-scroll-header" id="whyHeader">
+        <span class="sec-badge">Nuestro compromiso</span>
+        <h2>¿Por qué Feva es <em>diferente</em>?</h2>
+        <div class="divider c"></div>
+      </div>
+      <div class="why-scroll-grid">
+        <div class="why-card wsc">
+          <div class="why-icon">🌱</div>
+          <h3>Producto de proximidad</h3>
+          <p>Trabajamos con más de 12 productores locales de Mallorca. Lo que hoy llega del campo, esta noche está en tu plato.</p>
+        </div>
+        <div class="why-card wsc">
+          <div class="why-icon">👨‍🍳</div>
+          <h3>Cocina con alma</h3>
+          <p>Cada receta lleva el sello de Marcos Ferrer, criado entre fogones mallorquines y formado en las mejores cocinas de España.</p>
+        </div>
+        <div class="why-card wsc">
+          <div class="why-icon">🏡</div>
+          <h3>Ambiente de casa</h3>
+          <p>Un espacio íntimo donde te llamamos por tu nombre. Sin prisas, sin ruido. Solo buena mesa y buena gente.</p>
+        </div>
+        <div class="why-card wsc">
+          <div class="why-icon">🍷</div>
+          <h3>Vino de la tierra</h3>
+          <p>Selección cuidada de los mejores vinos D.O. Binissalem y Pla i Llevant — los grandes desconocidos del vino español.</p>
+        </div>
+      </div>
+    </div>
     <div class="scroll-progress-bar">
       <div class="scroll-progress-fill" id="progressFill"></div>
-    </div>
-  </div>
-</section>
-
-<!-- POR QUÉ FEVA -->
-<section class="why">
-  <div class="cnt">
-    <div class="sec-hd rv">
-      <span class="sec-badge">Nuestro compromiso</span>
-      <h2 class="sec-title">¿Por qué Feva es <em>diferente</em>?</h2>
-      <div class="divider"></div>
-      <p class="sec-sub">Aquí no hay atajos ni congelados. Solo trabajo honesto, producto real y amor por la cocina de siempre.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card float-card">
-        <div class="why-icon">🌱</div>
-        <h3>Producto de proximidad</h3>
-        <p>Trabajamos con más de 12 productores locales de Mallorca. Lo que hoy llega del campo, esta noche está en tu plato.</p>
-      </div>
-      <div class="why-card float-card">
-        <div class="why-icon">👨‍🍳</div>
-        <h3>Cocina con alma</h3>
-        <p>Cada receta lleva el sello de Marcos Ferrer, criado entre fogones mallorquines y formado en las mejores cocinas de España.</p>
-      </div>
-      <div class="why-card float-card">
-        <div class="why-icon">🏡</div>
-        <h3>Ambiente de casa</h3>
-        <p>Un espacio íntimo donde te llamamos por tu nombre. Sin prisas, sin ruido. Solo buena mesa y buena gente.</p>
-      </div>
-      <div class="why-card float-card">
-        <div class="why-icon">🍷</div>
-        <h3>Vino de la tierra</h3>
-        <p>Selección cuidada de los mejores vinos D.O. Binissalem y Pla i Llevant — los grandes desconocidos del vino español.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -616,35 +616,75 @@
 
 <script>
 (function() {
-  const video = document.getElementById('heroVideo');
-  const hero = document.getElementById('scroll-hero');
-  const progressFill = document.getElementById('progressFill');
+  const video       = document.getElementById('heroVideo');
+  const hero        = document.getElementById('scroll-hero');
+  const progressFill= document.getElementById('progressFill');
+  const heroOverlay = document.getElementById('heroOverlay');
+  const whyOverlay  = document.getElementById('whyOverlay');
+  const whyHeader   = document.getElementById('whyHeader');
+  const whyCards    = document.querySelectorAll('.wsc');
   if (!video || !hero) return;
+
   const isMobile = window.matchMedia('(max-width: 768px)').matches;
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (isMobile || prefersReduced) {
-    video.autoplay = true; video.loop = true; video.play().catch(() => {}); return;
+    video.autoplay = true; video.loop = true; video.play().catch(() => {});
+    if (whyOverlay) { whyOverlay.style.opacity = '1'; whyOverlay.style.position = 'relative'; }
+    whyCards.forEach(c => { c.style.opacity = '1'; c.style.transform = 'none'; });
+    return;
   }
+
   video.pause(); video.currentTime = 0;
-  let isVideoReady = false;
-  video.addEventListener('loadedmetadata', () => { isVideoReady = true; });
+  let ready = false;
+  video.addEventListener('loadedmetadata', () => { ready = true; });
   video.load();
-  function updateVideo() {
-    if (!isVideoReady || !video.duration) return;
-    const heroTop = hero.getBoundingClientRect().top;
-    const scrolled = -heroTop;
+
+  function ease(t) { return t < .5 ? 2*t*t : -1+(4-2*t)*t; }
+  function phase(p, s, e) { return ease(Math.max(0, Math.min(1, (p - s) / (e - s)))); }
+
+  function update() {
+    if (!ready || !video.duration) return;
+    const scrolled   = -hero.getBoundingClientRect().top;
     const scrollable = hero.offsetHeight - window.innerHeight;
-    if (scrolled <= 0) { video.currentTime = 0; if (progressFill) progressFill.style.width = '0%'; return; }
-    if (scrolled >= scrollable) { video.currentTime = video.duration; if (progressFill) progressFill.style.width = '100%'; return; }
-    const progress = scrolled / scrollable;
-    video.currentTime = progress * video.duration;
-    if (progressFill) progressFill.style.width = (progress * 100) + '%';
+    const p = Math.max(0, Math.min(1, scrolled / scrollable));
+
+    if (progressFill) progressFill.style.width = (p * 100) + '%';
+
+    // Fase 1 (0–0.50): video avanza
+    video.currentTime = phase(p, 0, 0.50) * video.duration;
+
+    // Hero overlay: visible al inicio, desaparece entre 0.40–0.54
+    if (heroOverlay) heroOverlay.style.opacity = 1 - phase(p, 0.40, 0.54);
+
+    // Why overlay: aparece entre 0.46–0.60
+    const wP = phase(p, 0.46, 0.60);
+    if (whyOverlay) {
+      whyOverlay.style.opacity = wP;
+      whyOverlay.classList.toggle('active', wP > 0.4);
+    }
+
+    // Título: 0.48–0.58
+    const hP = phase(p, 0.48, 0.58);
+    if (whyHeader) {
+      whyHeader.style.opacity = hP;
+      whyHeader.style.transform = `translateY(${(1 - hP) * 22}px)`;
+    }
+
+    // Tarjetas: aparecen una a una
+    const starts = [0.57, 0.67, 0.77, 0.87];
+    const ends   = [0.67, 0.77, 0.87, 0.97];
+    whyCards.forEach((c, i) => {
+      const cp = phase(p, starts[i], ends[i]);
+      c.style.opacity = cp;
+      c.style.transform = `translateY(${(1 - cp) * 48}px)`;
+    });
   }
+
   let ticking = false;
   window.addEventListener('scroll', () => {
-    if (!ticking) { requestAnimationFrame(() => { updateVideo(); ticking = false; }); ticking = true; }
+    if (!ticking) { requestAnimationFrame(() => { update(); ticking = false; }); ticking = true; }
   }, { passive: true });
-  window.addEventListener('resize', updateVideo);
+  window.addEventListener('resize', update);
 })();
 </script>
 
@@ -661,7 +701,6 @@
     if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 75); obs.unobserve(e.target); }
   }), { threshold: .1 });
   document.querySelectorAll('.rv').forEach(el => obs.observe(el));
-  document.querySelectorAll('.float-card').forEach(el => obs.observe(el));
   const cobs = new IntersectionObserver((es) => es.forEach(e => {
     if (!e.isIntersecting) return;
     const t = +e.target.dataset.t, is4k = t >= 1000;
