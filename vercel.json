@@ -9,6 +9,7 @@
     { "source": "/nosotros", "destination": "/feva/nosotros.html" },
     { "source": "/nosotros.html", "destination": "/feva/nosotros.html" },
     { "source": "/contacto", "destination": "/feva/contacto.html" },
-    { "source": "/contacto.html", "destination": "/feva/contacto.html" }
+    { "source": "/contacto.html", "destination": "/feva/contacto.html" },
+    { "source": "/assets/:file*", "destination": "/feva/assets/:file*" }
   ]
 }
