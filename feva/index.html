@@ -140,6 +140,19 @@
     .why-card h3 { font-family: var(--ft); font-size: 1.12rem; color: var(--dark); margin-bottom: 8px; }
     .why-card p { font-size: .87rem; color: var(--txt-m); line-height: 1.75; }
 
+    /* ── FLOAT-IN CARDS ── */
+    .float-card { opacity: 0; transform: translateY(52px) scale(.97); }
+    .float-card.in { animation: floatIn .75s cubic-bezier(.22,.61,.36,1) forwards; }
+    .float-card:nth-child(1).in { animation-delay: 0s; }
+    .float-card:nth-child(2).in { animation-delay: .13s; }
+    .float-card:nth-child(3).in { animation-delay: .26s; }
+    .float-card:nth-child(4).in { animation-delay: .39s; }
+    @keyframes floatIn {
+      0%   { opacity: 0; transform: translateY(52px) scale(.97); }
+      60%  { opacity: 1; transform: translateY(-8px) scale(1.01); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
     /* ── SIGNATURE SPLIT ── */
     .signature { padding: 0; background: var(--light); }
     .sig-wrap { display: grid; grid-template-columns: 1fr 1fr; min-height: 620px; }
@@ -341,6 +354,40 @@
   </div>
 </section>
 
+<!-- POR QUÉ FEVA -->
+<section class="why">
+  <div class="cnt">
+    <div class="sec-hd rv">
+      <span class="sec-badge">Nuestro compromiso</span>
+      <h2 class="sec-title">¿Por qué Feva es <em>diferente</em>?</h2>
+      <div class="divider"></div>
+      <p class="sec-sub">Aquí no hay atajos ni congelados. Solo trabajo honesto, producto real y amor por la cocina de siempre.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card float-card">
+        <div class="why-icon">🌱</div>
+        <h3>Producto de proximidad</h3>
+        <p>Trabajamos con más de 12 productores locales de Mallorca. Lo que hoy llega del campo, esta noche está en tu plato.</p>
+      </div>
+      <div class="why-card float-card">
+        <div class="why-icon">👨‍🍳</div>
+        <h3>Cocina con alma</h3>
+        <p>Cada receta lleva el sello de Marcos Ferrer, criado entre fogones mallorquines y formado en las mejores cocinas de España.</p>
+      </div>
+      <div class="why-card float-card">
+        <div class="why-icon">🏡</div>
+        <h3>Ambiente de casa</h3>
+        <p>Un espacio íntimo donde te llamamos por tu nombre. Sin prisas, sin ruido. Solo buena mesa y buena gente.</p>
+      </div>
+      <div class="why-card float-card">
+        <div class="why-icon">🍷</div>
+        <h3>Vino de la tierra</h3>
+        <p>Selección cuidada de los mejores vinos D.O. Binissalem y Pla i Llevant — los grandes desconocidos del vino español.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- HOY EN FEVA -->
 <section class="specials">
   <div class="cnt">
@@ -380,40 +427,6 @@
             <span class="spec-price">6 €</span>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- POR QUÉ FEVA -->
-<section class="why">
-  <div class="cnt">
-    <div class="sec-hd rv">
-      <span class="sec-badge">Nuestro compromiso</span>
-      <h2 class="sec-title">¿Por qué Feva es <em>diferente</em>?</h2>
-      <div class="divider"></div>
-      <p class="sec-sub">Aquí no hay atajos ni congelados. Solo trabajo honesto, producto real y amor por la cocina de siempre.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card rv">
-        <div class="why-icon">🌱</div>
-        <h3>Producto de proximidad</h3>
-        <p>Trabajamos con más de 12 productores locales de Mallorca. Lo que hoy llega del campo, esta noche está en tu plato.</p>
-      </div>
-      <div class="why-card rv">
-        <div class="why-icon">👨‍🍳</div>
-        <h3>Cocina con alma</h3>
-        <p>Cada receta lleva el sello de Marcos Ferrer, criado entre fogones mallorquines y formado en las mejores cocinas de España.</p>
-      </div>
-      <div class="why-card rv">
-        <div class="why-icon">🏡</div>
-        <h3>Ambiente de casa</h3>
-        <p>Un espacio íntimo donde te llamamos por tu nombre. Sin prisas, sin ruido. Solo buena mesa y buena gente.</p>
-      </div>
-      <div class="why-card rv">
-        <div class="why-icon">🍷</div>
-        <h3>Vino de la tierra</h3>
-        <p>Selección cuidada de los mejores vinos D.O. Binissalem y Pla i Llevant — los grandes desconocidos del vino español.</p>
       </div>
     </div>
   </div>
@@ -648,6 +661,7 @@
     if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 75); obs.unobserve(e.target); }
   }), { threshold: .1 });
   document.querySelectorAll('.rv').forEach(el => obs.observe(el));
+  document.querySelectorAll('.float-card').forEach(el => obs.observe(el));
   const cobs = new IntersectionObserver((es) => es.forEach(e => {
     if (!e.isIntersecting) return;
     const t = +e.target.dataset.t, is4k = t >= 1000;
