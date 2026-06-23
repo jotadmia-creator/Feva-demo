@@ -99,8 +99,15 @@
     .scroll-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--pr), var(--acc)); transition: width .05s linear; }
     @media (max-width: 768px) {
       .scroll-video-hero { height: 200vh !important; }
-      .scroll-video-sticky video { display: none; } /* canvas dibuja los frames en móvil */
-      .why-scroll-grid { grid-template-columns: 1fr 1fr; }
+      .scroll-video-sticky video { display: none; }
+      .why-scroll-overlay { padding: 52px 14px 12px; }
+      .why-scroll-header { margin-bottom: 16px; }
+      .why-scroll-header h2 { font-size: 1.4rem; margin-bottom: 4px; }
+      .why-scroll-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .why-card { padding: 18px 14px; }
+      .why-icon { width: 36px; height: 36px; font-size: 1rem; margin-bottom: 10px; border-radius: 10px; }
+      .why-card h3 { font-size: .9rem; margin-bottom: 4px; }
+      .why-card p { font-size: .75rem; line-height: 1.5; }
     }
     @media (prefers-reduced-motion: reduce) { .scroll-video-hero { height: 100vh !important; } }
 
