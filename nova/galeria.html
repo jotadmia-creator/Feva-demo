@@ -7,8 +7,79 @@
   <meta name="description" content="Descubre el ambiente, los platos y el espíritu de Nova a través de nuestra galería de imágenes.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--pr:#C4614A;--pr-d:#A34D3A;--sec:#2C4A2E;--acc:#D4A853;--dark:#1C1209;--cream:#F7F2EB;--light:#FEFCF9;--txt:#3A3330;--txt-m:#7A6E68;--border:rgba(196,97,74,.15);--ft:'Playfair Display',Georgia,serif;--fb:'Nunito',sans-serif;--sh-m:0 4px 24px rgba(28,18,9,.12);--r:14px;--ease:.3s cubic-bezier(.4,0,.2,1);--mw:1160px;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}html{scroll-behavior:smooth;}body{font-family:var(--fb);color:var(--txt);background:var(--light);line-height:1.7;overflow-x:hidden;}a{text-decoration:none;color:inherit;}
+    #prog{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--pr),var(--acc));z-index:9999;transition:width .1s;}
+    header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 32px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:var(--ease);}
+    header.scrolled{background:rgba(28,18,9,.97);backdrop-filter:blur(12px);box-shadow:0 2px 24px rgba(0,0,0,.3);}
+    .logo{font-family:var(--ft);font-size:1.8rem;font-weight:700;color:#fff;letter-spacing:5px;text-transform:uppercase;}.logo b{color:var(--acc);}
+    nav{display:flex;align-items:center;gap:28px;}nav a{color:rgba(255,255,255,.8);font-size:.82rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;transition:var(--ease);position:relative;}
+    nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--acc);transition:var(--ease);}nav a:hover,nav a.active{color:#fff;}nav a:hover::after,nav a.active::after{width:100%;}
+    .nav-cta{background:var(--pr)!important;color:#fff!important;padding:9px 22px;border-radius:50px;font-weight:700!important;}.nav-cta::after{display:none!important;}.nav-cta:hover{background:var(--pr-d)!important;transform:translateY(-1px);}
+    .nav-phone{color:rgba(255,255,255,.55)!important;font-size:.75rem!important;}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none;}.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:var(--ease);}
+    .hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}.hamburger.open span:nth-child(2){opacity:0;}.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+    .mob-nav{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(28,18,9,.98);backdrop-filter:blur(16px);padding:24px 32px;flex-direction:column;gap:0;z-index:999;border-top:1px solid rgba(255,255,255,.08);}.mob-nav.open{display:flex;}.mob-nav a{color:rgba(255,255,255,.8);font-size:.95rem;font-weight:500;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07);}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-weight:700;font-size:.95rem;transition:var(--ease);cursor:pointer;border:none;font-family:var(--fb);}
+    .btn-pr{background:var(--pr);color:#fff;box-shadow:0 4px 20px rgba(196,97,74,.4);}.btn-pr:hover{background:var(--pr-d);transform:translateY(-2px);}
+    .btn-wa{background:#25D366;color:#fff;box-shadow:0 4px 20px rgba(37,211,102,.35);}.btn-wa:hover{background:#1ebe5a;transform:translateY(-2px);}
+
+    /* HERO */
+    .hero-page{height:55vh;min-height:400px;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:linear-gradient(rgba(8,4,1,.52),rgba(8,4,1,.74)),url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&auto=format&fit=crop&q=80') center/cover no-repeat;}
+    .hero-pg-cnt{position:relative;z-index:1;padding:100px 24px 60px;animation:fadeUp .9s ease both;}
+    .page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,168,83,.12);border:1px solid rgba(212,168,83,.28);color:var(--acc);padding:6px 20px;border-radius:50px;font-size:.76rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;}
+    .hero-pg-cnt h1{font-family:var(--ft);font-size:clamp(2.4rem,6vw,4.5rem);color:#fff;font-weight:700;margin-bottom:14px;}.hero-pg-cnt h1 em{font-style:italic;color:var(--acc);}
+    .hero-line{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--acc),transparent);margin:16px auto;}
+    .hero-pg-cnt p{font-size:1.05rem;color:rgba(255,255,255,.55);max-width:460px;margin:0 auto;}
+
+    /* GALLERY */
+    .gallery-sec{padding:80px 24px;background:var(--light);}
+    .cnt{max-width:var(--mw);margin:0 auto;}
+    .filter-bar{display:flex;gap:10px;margin-bottom:48px;flex-wrap:wrap;}
+    .filter-btn{padding:9px 22px;border-radius:50px;border:1.5px solid var(--border);background:transparent;cursor:pointer;font-family:var(--fb);font-size:.84rem;font-weight:700;color:var(--txt-m);transition:var(--ease);}
+    .filter-btn.active{background:var(--pr);color:#fff;border-color:var(--pr);}
+    .filter-btn:hover:not(.active){border-color:var(--pr);color:var(--pr);}
+
+    /* MASONRY GRID */
+    .gallery-grid{columns:3;column-gap:16px;}
+    .gal-item{break-inside:avoid;margin-bottom:16px;border-radius:var(--r);overflow:hidden;position:relative;cursor:pointer;}
+    .gal-item:hover{box-shadow:var(--sh-m);}
+    .gal-item:hover .gal-overlay{opacity:1;}
+    .gal-box{background-size:cover;background-position:center;position:relative;transition:transform .65s ease;}
+    .gal-item:hover .gal-box{transform:scale(1.06);}
+    .gal-box.tall{aspect-ratio:3/4;}
+    .gal-box.wide{aspect-ratio:4/3;}
+    .gal-box.sq{aspect-ratio:1/1;}
+    .gal-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,rgba(0,0,0,.2) 50%,transparent 100%);opacity:0;transition:var(--ease);display:flex;align-items:flex-end;padding:20px;}
+    .gal-label{color:#fff;}
+    .gal-label .tag{display:inline-block;background:var(--acc);color:var(--dark);font-size:.68rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 9px;border-radius:50px;margin-bottom:6px;}
+    .gal-label h4{font-family:var(--ft);font-size:1rem;color:#fff;}
+
+    /* CTA */
+    .cta-sec{background:var(--dark);text-align:center;padding:80px 24px;}
+    .cta-sec h2{font-family:var(--ft);font-size:clamp(1.8rem,4vw,3rem);color:#fff;margin-bottom:12px;}.cta-sec h2 em{font-style:italic;color:var(--acc);}
+    .cta-sec p{color:rgba(255,255,255,.5);margin-bottom:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.8;}
+    .cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+
+    /* FOOTER */
+    footer{background:#110B05;color:rgba(255,255,255,.5);padding:68px 24px 32px;}
+    .ft-grid{max-width:var(--mw);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07);margin-bottom:32px;}
+    .ft-brand p{font-size:.875rem;line-height:1.82;max-width:255px;margin-bottom:22px;}
+    .socials{display:flex;gap:10px;}.soc{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:.95rem;transition:var(--ease);}.soc:hover{background:var(--pr);border-color:var(--pr);transform:translateY(-2px);}
+    .ft-col h4{font-family:var(--ft);font-size:1rem;color:rgba(255,255,255,.82);margin-bottom:20px;}.ft-col ul{list-style:none;}.ft-col li{margin-bottom:10px;}.ft-col li a{font-size:.875rem;color:rgba(255,255,255,.45);transition:var(--ease);}.ft-col li a:hover{color:var(--acc);}
+    .ft-bot{max-width:var(--mw);margin:0 auto;display:flex;justify-content:space-between;font-size:.8rem;flex-wrap:wrap;gap:10px;}
+    .wa-float{position:fixed;bottom:28px;right:28px;z-index:998;display:flex;flex-direction:column;align-items:flex-end;gap:10px;}
+    .wa-bubble{background:#fff;color:var(--txt);padding:10px 16px;border-radius:12px 12px 0 12px;font-size:.84rem;font-weight:700;box-shadow:var(--sh-m);opacity:0;transform:translateY(6px) scale(.95);transition:var(--ease);white-space:nowrap;}.wa-float:hover .wa-bubble{opacity:1;transform:translateY(0) scale(1);}
+    .wa-btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:var(--ease);animation:pwa 2.5s infinite;}.wa-btn:hover{transform:scale(1.1);}.wa-btn svg{fill:#fff;}
+    .rv{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}.rv.in{opacity:1;transform:translateY(0);}
+    .hidden{display:none;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes pwa{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4);}50%{box-shadow:0 4px 30px rgba(37,211,102,.65),0 0 0 12px rgba(37,211,102,.1);}}
+    @media(max-width:900px){.gallery-grid{columns:2;}.ft-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:768px){nav{display:none;}.hamburger{display:flex;}.gallery-grid{columns:1;}.ft-grid{grid-template-columns:1fr;gap:32px;}}
+  </style>
 </head>
 <body>
 <div id="prog"></div>
@@ -25,13 +96,15 @@
 <div class="mob-nav" id="mnav">
   <a href="index.html">Inicio</a><a href="carta.html">Carta</a><a href="galeria.html">Galería</a>
   <a href="nosotros.html">Nosotros</a><a href="contacto.html">Contacto</a>
-  <a href="contacto.html">Reservar mesa</a>
+  <a href="contacto.html" style="color:var(--acc)!important;font-weight:700;">→ Reservar mesa</a>
   <a href="tel:+34971234567">+34 971 234 567</a>
 </div>
 
-<div class="hero-page" style="--hero-img: url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1600&auto=format&fit=crop&q=80');">
+<div class="hero-page">
   <div class="hero-pg-cnt">
-    <h1>Galería</h1>
+    <div class="page-badge">✦ Imágenes</div>
+    <h1>Galería <em>Nova</em></h1>
+    <div class="hero-line"></div>
     <p>El ambiente, los platos y los momentos que hacen de Nova un lugar especial en el Born de Palma.</p>
   </div>
 </div>
@@ -40,83 +113,83 @@
   <div class="cnt">
     <div class="filter-bar rv">
       <button class="filter-btn active" data-filter="all">Todos</button>
-      <button class="filter-btn" data-filter="platos">Platos</button>
-      <button class="filter-btn" data-filter="ambiente">Ambiente</button>
-      <button class="filter-btn" data-filter="cocina">Cocina</button>
-      <button class="filter-btn" data-filter="local">El local</button>
+      <button class="filter-btn" data-filter="platos">🍽️ Platos</button>
+      <button class="filter-btn" data-filter="ambiente">✨ Ambiente</button>
+      <button class="filter-btn" data-filter="cocina">👨‍🍳 Cocina</button>
+      <button class="filter-btn" data-filter="local">🏡 El local</button>
     </div>
 
     <div class="gallery-grid" id="gal">
 
       <div class="gal-item" data-cat="platos">
         <div class="gal-box tall" style="background-image:url('https://images.unsplash.com/photo-1534080564583-6be75777b70a?w=600&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>Platos</span><h4>Arròs brut mallorquín</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">Platos</span><h4>Arròs brut mallorquín</h4></div></div>
         </div>
       </div>
 
       <div class="gal-item" data-cat="ambiente">
         <div class="gal-box wide" style="background-image:url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>Ambiente</span><h4>Mesa en el patio trasero</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">Ambiente</span><h4>Mesa en el patio trasero</h4></div></div>
         </div>
       </div>
 
       <div class="gal-item" data-cat="platos">
         <div class="gal-box sq" style="background-image:url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>Platos</span><h4>Ensaïmada de la casa</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">Platos</span><h4>Ensaïmada de la casa</h4></div></div>
         </div>
       </div>
 
       <div class="gal-item" data-cat="local">
         <div class="gal-box wide" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=700&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>El local</span><h4>Entrada del restaurante</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">El local</span><h4>Entrada del restaurante</h4></div></div>
         </div>
       </div>
 
       <div class="gal-item" data-cat="platos">
         <div class="gal-box tall" style="background-image:url('https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>Platos</span><h4>Cap roig al horno</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">Platos</span><h4>Cap roig al horno</h4></div></div>
         </div>
       </div>
 
       <div class="gal-item" data-cat="cocina">
         <div class="gal-box sq" style="background-image:url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>Cocina</span><h4>Marcos preparando el frito</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">Cocina</span><h4>Marcos preparando el frito</h4></div></div>
         </div>
       </div>
 
       <div class="gal-item" data-cat="ambiente">
         <div class="gal-box tall" style="background-image:url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>Ambiente</span><h4>Bodega de vinos mallorquines</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">Ambiente</span><h4>Bodega de vinos mallorquines</h4></div></div>
         </div>
       </div>
 
       <div class="gal-item" data-cat="platos">
         <div class="gal-box wide" style="background-image:url('https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=700&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>Platos</span><h4>Cordero de la Tramuntana</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">Platos</span><h4>Cordero de la Tramuntana</h4></div></div>
         </div>
       </div>
 
       <div class="gal-item" data-cat="local">
         <div class="gal-box sq" style="background-image:url('https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>El local</span><h4>Terraza del Born</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">El local</span><h4>Terraza del Born</h4></div></div>
         </div>
       </div>
 
       <div class="gal-item" data-cat="cocina">
         <div class="gal-box wide" style="background-image:url('https://images.unsplash.com/photo-1581349485608-9469926a8e5e?w=700&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>Cocina</span><h4>Al fuego, como siempre</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">Cocina</span><h4>Al fuego, como siempre</h4></div></div>
         </div>
       </div>
 
       <div class="gal-item" data-cat="platos">
         <div class="gal-box tall" style="background-image:url('https://images.unsplash.com/photo-1551024601-bec78aea704b?w=600&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>Platos</span><h4>Greixonera de brossat</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">Platos</span><h4>Greixonera de brossat</h4></div></div>
         </div>
       </div>
 
       <div class="gal-item" data-cat="ambiente">
         <div class="gal-box sq" style="background-image:url('https://images.unsplash.com/photo-1543353071-873f17a7066c?w=600&auto=format&fit=crop&q=80')">
-          <div class="gal-overlay"><div class="gal-label"><span>Ambiente</span><h4>Viernes por la noche</h4></div></div>
+          <div class="gal-overlay"><div class="gal-label"><span class="tag">Ambiente</span><h4>Viernes por la noche</h4></div></div>
         </div>
       </div>
 
@@ -125,16 +198,16 @@
 </section>
 
 <!-- CTA -->
-<section class="cta-sec" style="--cta-img: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&auto=format&fit=crop&q=80');">
+<section class="cta-sec">
   <div class="cnt">
-    <h2>¿Lo que ves te gusta?<br>Ven a vivirlo en persona</h2>
-    <p>Las fotos no hacen justicia al olor del frito recién hecho ni al primer sorbo de vino de Binissalem. La mejor galería es la que vives sentado en una de nuestras mesas.</p>
+    <h2>¿Lo que ves te gusta?<br><em>Ven a vivirlo en persona</em></h2>
+    <p style="margin-bottom:32px;">Las fotos no hacen justicia al olor del frito recién hecho ni al primer sorbo de vino de Binissalem. La mejor galería es la que vives sentado en una de nuestras mesas.</p>
     <div class="cta-btns">
       <a href="https://wa.me/34971234567?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Nova" target="_blank" class="btn btn-wa">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Reservar mesa
       </a>
-      <a href="carta.html" class="btn btn-outline-w">Ver la carta</a>
+      <a href="carta.html" class="btn btn-pr">Ver la carta</a>
     </div>
   </div>
 </section>
@@ -165,16 +238,34 @@
       <li><a href="contacto.html">07001 Palma, Mallorca</a></li>
     </ul></div>
   </div>
-  <div class="ft-bot"><span>© 2024 Nova Mallorca · Todos los derechos reservados</span><span>Hecho en Palma de Mallorca</span></div>
+  <div class="ft-bot"><span>© 2024 Nova Mallorca · Todos los derechos reservados</span><span>Hecho con ❤️ en Palma de Mallorca</span></div>
 </footer>
 
 <div class="wa-float">
-  <div class="wa-bubble">¡Reserva tu mesa!</div>
+  <div class="wa-bubble">¡Reserva tu mesa! 🍽️</div>
   <a href="https://wa.me/34971234567?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Nova" target="_blank" class="wa-btn">
-    <svg width="24" height="24" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    <svg width="28" height="28" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 </div>
 
-<script src="assets/main.js"></script>
+<script>
+  window.addEventListener('scroll',()=>{const s=document.documentElement,t=s.scrollTop,h=s.scrollHeight-window.innerHeight;document.getElementById('prog').style.width=(t/h*100)+'%';});
+  const hdr=document.getElementById('hdr');window.addEventListener('scroll',()=>hdr.classList.toggle('scrolled',scrollY>50));
+  const hbg=document.getElementById('hbg'),mnav=document.getElementById('mnav');hbg.addEventListener('click',()=>{hbg.classList.toggle('open');mnav.classList.toggle('open');});
+  // Gallery filter
+  document.querySelectorAll('.filter-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f=btn.dataset.filter;
+      document.querySelectorAll('.gal-item').forEach(item=>{
+        const show=f==='all'||item.dataset.cat===f;
+        item.style.display=show?'block':'none';
+      });
+    });
+  });
+  const obs=new IntersectionObserver((es)=>es.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('in'),i*70);obs.unobserve(e.target);}}),{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
