@@ -1,15 +1,15 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/feva/index.html" },
-    { "source": "/index.html", "destination": "/feva/index.html" },
-    { "source": "/carta", "destination": "/feva/carta.html" },
-    { "source": "/carta.html", "destination": "/feva/carta.html" },
-    { "source": "/galeria", "destination": "/feva/galeria.html" },
-    { "source": "/galeria.html", "destination": "/feva/galeria.html" },
-    { "source": "/nosotros", "destination": "/feva/nosotros.html" },
-    { "source": "/nosotros.html", "destination": "/feva/nosotros.html" },
-    { "source": "/contacto", "destination": "/feva/contacto.html" },
-    { "source": "/contacto.html", "destination": "/feva/contacto.html" },
-    { "source": "/assets/:file*", "destination": "/feva/assets/:file*" }
+    { "source": "/", "destination": "/nova/index.html" },
+    { "source": "/index.html", "destination": "/nova/index.html" },
+    { "source": "/carta", "destination": "/nova/carta.html" },
+    { "source": "/carta.html", "destination": "/nova/carta.html" },
+    { "source": "/galeria", "destination": "/nova/galeria.html" },
+    { "source": "/galeria.html", "destination": "/nova/galeria.html" },
+    { "source": "/nosotros", "destination": "/nova/nosotros.html" },
+    { "source": "/nosotros.html", "destination": "/nova/nosotros.html" },
+    { "source": "/contacto", "destination": "/nova/contacto.html" },
+    { "source": "/contacto.html", "destination": "/nova/contacto.html" },
+    { "source": "/assets/:file*", "destination": "/nova/assets/:file*" }
   ]
 }
