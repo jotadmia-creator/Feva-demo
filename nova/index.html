@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Feva — Cocina de raíces, sabor de siempre | Palma, Mallorca</title>
-  <meta name="description" content="Restaurante Feva en Palma, Mallorca. Cocina mediterránea de proximidad con alma local. Ingredientes de temporada, recetas de siempre.">
+  <title>Nova — Cocina de raíces, sabor de siempre | Palma, Mallorca</title>
+  <meta name="description" content="Restaurante Nova en Palma, Mallorca. Cocina mediterránea de proximidad con alma local. Ingredientes de temporada, recetas de siempre.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -62,21 +62,61 @@
     .btn-dark { background: var(--dark); color: #fff; }
     .btn-dark:hover { background: #2E1E10; transform: translateY(-2px); }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center; text-align: center;
-      position: relative; overflow: hidden;
-      background:
-        linear-gradient(rgba(8,4,1,.5), rgba(8,4,1,.78)),
+    /* ── SCROLL VIDEO HERO ── */
+    .scroll-video-hero { height: 300vh; position: relative; padding: 0 !important; }
+    .scroll-video-sticky {
+      position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden;
+      background: linear-gradient(rgba(8,4,1,.5), rgba(8,4,1,.78)),
         url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&auto=format&fit=crop&q=80')
         center/cover no-repeat;
     }
+    .scroll-video-sticky video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+    .hero-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 2;
+      background: linear-gradient(rgba(8,4,1,.45), rgba(8,4,1,.72));
+      text-align: center;
+    }
+    /* ── WHY SCROLL OVERLAY ── */
+    .why-scroll-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 3;
+      background: linear-gradient(rgba(8,4,1,.78), rgba(8,4,1,.92));
+      opacity: 0; pointer-events: none;
+      padding: 80px 24px 24px;
+    }
+    .why-scroll-overlay.active { pointer-events: auto; }
+    .why-scroll-header { text-align: center; margin-bottom: 40px; opacity: 0; transform: translateY(22px); }
+    .why-scroll-header .sec-badge { color: var(--acc); }
+    .why-scroll-header .sec-badge::before, .why-scroll-header .sec-badge::after { background: var(--acc); }
+    .why-scroll-header h2 { font-family: var(--ft); font-size: clamp(2rem,4.5vw,3rem); color: #fff; line-height: 1.2; margin-bottom: 8px; }
+    .why-scroll-header h2 em { font-style: italic; color: var(--pr); }
+    .why-scroll-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 16px; max-width: var(--mw); width: 100%; }
+    .wsc { opacity: 0; transform: translateY(48px); will-change: opacity, transform; }
+    .scroll-progress-bar { position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: rgba(255,255,255,.15); z-index: 4; }
+    .scroll-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--pr), var(--acc)); transition: width .05s linear; }
+    @media (max-width: 768px) {
+      .scroll-video-hero { height: 200vh !important; }
+      .scroll-video-sticky video { display: none; }
+      .why-scroll-overlay { padding: 44px 12px 8px; }
+      .why-scroll-header { margin-bottom: 12px; }
+      .why-scroll-header h2 { font-size: 1.25rem; margin-bottom: 2px; }
+      .why-scroll-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .why-card { padding: 14px 12px; }
+      .why-icon { width: 32px; height: 32px; font-size: .9rem; margin-bottom: 7px; border-radius: 8px; }
+      .why-card h3 { font-size: .82rem; margin-bottom: 3px; line-height: 1.25; }
+      .why-card p { font-size: .72rem; line-height: 1.4; }
+    }
+    @media (prefers-reduced-motion: reduce) { .scroll-video-hero { height: 100vh !important; } }
+
+    /* ── HERO CONTENT ── */
     .hero-content { position: relative; z-index: 1; max-width: 780px; padding: 130px 24px 90px; animation: fadeUp 1.1s ease both; }
     .hero-orn { display: flex; align-items: center; justify-content: center; gap: 16px; margin-bottom: 32px; }
     .hero-orn span { display: block; width: 40px; height: 1px; background: rgba(212,168,83,.6); }
     .hero-orn small { color: var(--acc); font-size: .72rem; font-weight: 700; letter-spacing: 3.5px; text-transform: uppercase; }
-    .hero h1 { font-family: var(--ft); font-size: clamp(4rem,10vw,8rem); font-weight: 700; color: #fff; line-height: 1; margin-bottom: 18px; letter-spacing: 10px; }
+    .hero-content h1 { font-family: var(--ft); font-size: clamp(4rem,10vw,8rem); font-weight: 700; color: #fff; line-height: 1; margin-bottom: 18px; letter-spacing: 10px; }
     .hero-tag { font-family: var(--ft); font-style: italic; font-size: clamp(1.1rem,2.5vw,1.55rem); color: rgba(255,255,255,.6); margin-bottom: 40px; font-weight: 400; }
     .hero-line { width: 1px; height: 56px; background: linear-gradient(to bottom, rgba(212,168,83,.7), transparent); margin: 0 auto 40px; }
     .hero-desc { font-size: 1rem; color: rgba(255,255,255,.52); max-width: 440px; margin: 0 auto 48px; line-height: 1.9; }
@@ -127,6 +167,7 @@
     .why-icon { width: 52px; height: 52px; background: linear-gradient(135deg, var(--pr), var(--pr-d)); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 20px; }
     .why-card h3 { font-family: var(--ft); font-size: 1.12rem; color: var(--dark); margin-bottom: 8px; }
     .why-card p { font-size: .87rem; color: var(--txt-m); line-height: 1.75; }
+
 
     /* ── SIGNATURE SPLIT ── */
     .signature { padding: 0; background: var(--light); }
@@ -272,7 +313,7 @@
 
 <!-- HEADER -->
 <header id="hdr">
-  <a href="index.html" class="logo">FE<b>V</b>A</a>
+  <a href="index.html" class="logo">NO<b>V</b>A</a>
   <nav>
     <a href="index.html" class="active">Inicio</a>
     <a href="carta.html">Carta</a>
@@ -294,31 +335,75 @@
   <a href="tel:+34971234567">+34 971 234 567</a>
 </div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-content">
-    <div class="hero-orn">
-      <span></span>
-      <small>Palma de Mallorca</small>
-      <span></span>
+<!-- SCROLL-VIDEO-SECTION -->
+<section class="scroll-video-hero" id="scroll-hero">
+  <div class="scroll-video-sticky">
+    <video
+      id="heroVideo"
+      src="assets/nova-hero.mp4"
+      poster="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&auto=format&fit=crop&q=80"
+      playsinline
+      muted
+      preload="auto"
+    ></video>
+    <div class="hero-overlay" id="heroOverlay">
+      <div class="hero-content">
+        <div class="hero-orn">
+          <span></span>
+          <small>Palma de Mallorca</small>
+          <span></span>
+        </div>
+        <h1>NOVA</h1>
+        <p class="hero-tag">Cocina de raíces, sabor de siempre</p>
+        <div class="hero-line"></div>
+        <p class="hero-desc">Ingredientes de la huerta mallorquina, recetas que saben a abuela y una mesa que se siente como casa.</p>
+        <div class="hero-btns">
+          <a href="carta.html" class="btn btn-pr">Ver nuestra carta</a>
+          <a href="contacto.html" class="btn btn-out">Reservar mesa →</a>
+        </div>
+      </div>
+      <div class="scroll-hint"><span>Descubre</span></div>
     </div>
-    <h1>FEVA</h1>
-    <p class="hero-tag">Cocina de raíces, sabor de siempre</p>
-    <div class="hero-line"></div>
-    <p class="hero-desc">Ingredientes de la huerta mallorquina, recetas que saben a abuela y una mesa que se siente como casa.</p>
-    <div class="hero-btns">
-      <a href="carta.html" class="btn btn-pr">Ver nuestra carta</a>
-      <a href="contacto.html" class="btn btn-out">Reservar mesa →</a>
+    <div class="why-scroll-overlay" id="whyOverlay">
+      <div class="why-scroll-header" id="whyHeader">
+        <span class="sec-badge">Nuestro compromiso</span>
+        <h2>¿Por qué Nova es <em>diferente</em>?</h2>
+        <div class="divider c"></div>
+      </div>
+      <div class="why-scroll-grid">
+        <div class="why-card wsc">
+          <div class="why-icon">🌱</div>
+          <h3>Producto de proximidad</h3>
+          <p>Trabajamos con más de 12 productores locales de Mallorca. Lo que hoy llega del campo, esta noche está en tu plato.</p>
+        </div>
+        <div class="why-card wsc">
+          <div class="why-icon">👨‍🍳</div>
+          <h3>Cocina con alma</h3>
+          <p>Cada receta lleva el sello de Marcos Ferrer, criado entre fogones mallorquines y formado en las mejores cocinas de España.</p>
+        </div>
+        <div class="why-card wsc">
+          <div class="why-icon">🏡</div>
+          <h3>Ambiente de casa</h3>
+          <p>Un espacio íntimo donde te llamamos por tu nombre. Sin prisas, sin ruido. Solo buena mesa y buena gente.</p>
+        </div>
+        <div class="why-card wsc">
+          <div class="why-icon">🍷</div>
+          <h3>Vino de la tierra</h3>
+          <p>Selección cuidada de los mejores vinos D.O. Binissalem y Pla i Llevant — los grandes desconocidos del vino español.</p>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-progress-bar">
+      <div class="scroll-progress-fill" id="progressFill"></div>
     </div>
   </div>
-  <div class="scroll-hint"><span>Descubre</span></div>
 </section>
 
-<!-- HOY EN FEVA -->
+<!-- HOY EN NOVA -->
 <section class="specials">
   <div class="cnt">
     <div class="sec-hd c rv">
-      <span class="sec-badge">Hoy en Feva</span>
+      <span class="sec-badge">Hoy en Nova</span>
       <h2 class="sec-title">Especiales del día</h2>
       <div class="divider c"></div>
       <p class="sec-sub">Cada jornada, lo mejor de temporada. Lo que hoy trae el mercado, esta noche está en tu plato.</p>
@@ -358,51 +443,17 @@
   </div>
 </section>
 
-<!-- POR QUÉ FEVA -->
-<section class="why">
-  <div class="cnt">
-    <div class="sec-hd rv">
-      <span class="sec-badge">Nuestro compromiso</span>
-      <h2 class="sec-title">¿Por qué Feva es <em>diferente</em>?</h2>
-      <div class="divider"></div>
-      <p class="sec-sub">Aquí no hay atajos ni congelados. Solo trabajo honesto, producto real y amor por la cocina de siempre.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card rv">
-        <div class="why-icon">🌱</div>
-        <h3>Producto de proximidad</h3>
-        <p>Trabajamos con más de 12 productores locales de Mallorca. Lo que hoy llega del campo, esta noche está en tu plato.</p>
-      </div>
-      <div class="why-card rv">
-        <div class="why-icon">👨‍🍳</div>
-        <h3>Cocina con alma</h3>
-        <p>Cada receta lleva el sello de Marcos Ferrer, criado entre fogones mallorquines y formado en las mejores cocinas de España.</p>
-      </div>
-      <div class="why-card rv">
-        <div class="why-icon">🏡</div>
-        <h3>Ambiente de casa</h3>
-        <p>Un espacio íntimo donde te llamamos por tu nombre. Sin prisas, sin ruido. Solo buena mesa y buena gente.</p>
-      </div>
-      <div class="why-card rv">
-        <div class="why-icon">🍷</div>
-        <h3>Vino de la tierra</h3>
-        <p>Selección cuidada de los mejores vinos D.O. Binissalem y Pla i Llevant — los grandes desconocidos del vino español.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FIRMA / SPLIT SECTION -->
 <div class="signature">
   <div class="sig-wrap">
     <div class="sig-photo">
-      <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=900&auto=format&fit=crop&q=80" alt="Marcos Ferrer en la cocina de Feva" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=900&auto=format&fit=crop&q=80" alt="Marcos Ferrer en la cocina de Nova" loading="lazy">
     </div>
     <div class="sig-text">
-      <span class="sec-badge rv">La firma de Feva</span>
+      <span class="sec-badge rv">La firma de Nova</span>
       <h2 class="rv">Cocinamos con el corazón y con el<br><em>mercado mallorquín</em></h2>
       <div class="sig-divider rv"></div>
-      <p class="rv">En Feva no hay menú de autor ni pirotecnia innecesaria. Solo el producto que cada mañana trae la isla y las manos de Marcos para transformarlo en algo que no olvidarás.</p>
+      <p class="rv">En Nova no hay menú de autor ni pirotecnia innecesaria. Solo el producto que cada mañana trae la isla y las manos de Marcos para transformarlo en algo que no olvidarás.</p>
       <div class="sig-features rv">
         <div class="sig-feat">
           <div class="sig-feat-line"></div>
@@ -422,7 +473,7 @@
           <div class="sig-feat-line"></div>
           <div class="sig-feat-body">
             <strong>Trato humano, siempre</strong>
-            <span>En Feva te conocemos. No somos un restaurante de turistas, somos el tuyo de siempre.</span>
+            <span>En Nova te conocemos. No somos un restaurante de turistas, somos el tuyo de siempre.</span>
           </div>
         </div>
       </div>
@@ -435,7 +486,7 @@
 <section class="stats">
   <div class="cnt">
     <div class="sec-hd c rv" style="margin-bottom:56px;">
-      <span class="sec-badge">Feva en números</span>
+      <span class="sec-badge">Nova en números</span>
       <h2 class="sec-title">Cinco años <em>cocinando con alma</em></h2>
       <div class="divider c"></div>
     </div>
@@ -465,13 +516,13 @@
   <div class="cnt">
     <div class="sec-hd c rv">
       <span class="sec-badge">Lo que dicen</span>
-      <h2 class="sec-title">Ellos ya han comido en <em>Feva</em></h2>
+      <h2 class="sec-title">Ellos ya han comido en <em>Nova</em></h2>
       <div class="divider c"></div>
     </div>
     <div class="tests-grid">
       <div class="test-card rv">
         <div class="stars">★★★★★</div>
-        <p class="test-txt">"La mejor greixonera que he probado en años. Marcos le pone una miel de la Tramuntana que es una locura. Feva es ya nuestro sitio de siempre."</p>
+        <p class="test-txt">"La mejor greixonera que he probado en años. Marcos le pone una miel de la Tramuntana que es una locura. Nova es ya nuestro sitio de siempre."</p>
         <div class="test-author"><div class="av av1">MT</div><div><span class="av-name">María T.</span><span class="av-src">Palma · Google Reviews</span></div></div>
       </div>
       <div class="test-card rv">
@@ -518,8 +569,8 @@
 <section class="cta-final">
   <div class="cta-final-cnt">
     <span class="sec-badge">Una mesa te espera</span>
-    <h2>¿A qué esperas para<br><em>venir a Feva?</em></h2>
-    <p>Cada reserva es un acto de amor por la buena cocina. Asegura tu mesa y descubre por qué Feva es el rincón favorito de Palma.</p>
+    <h2>¿A qué esperas para<br><em>venir a Nova?</em></h2>
+    <p>Cada reserva es un acto de amor por la buena cocina. Asegura tu mesa y descubre por qué Nova es el rincón favorito de Palma.</p>
     <div class="cta-btns">
       <a href="contacto.html" class="btn btn-pr">Reservar mesa →</a>
       <a href="carta.html" class="btn btn-out">Ver la carta</a>
@@ -531,7 +582,7 @@
 <footer>
   <div class="ft-grid">
     <div class="ft-brand">
-      <a href="index.html" class="logo">FE<b>V</b>A</a>
+      <a href="index.html" class="logo">NO<b>V</b>A</a>
       <p>Cocina mallorquina de proximidad en el corazón del Born de Palma. Donde cada plato cuenta una historia.</p>
       <div class="socials">
         <a href="https://instagram.com" target="_blank" class="soc" title="Instagram">📸</a>
@@ -555,13 +606,13 @@
     </ul></div>
     <div class="ft-col"><h4>Contacto</h4><ul>
       <li><a href="tel:+34971234567">+34 971 234 567</a></li>
-      <li><a href="mailto:hola@fevamallorca.com">hola@fevamallorca.com</a></li>
+      <li><a href="mailto:hola@novamallorca.com">hola@novamallorca.com</a></li>
       <li><a href="contacto.html">Carrer del Born, 14</a></li>
       <li><a href="contacto.html">07001 Palma, Mallorca</a></li>
     </ul></div>
   </div>
   <div class="ft-bot">
-    <span>© 2024 Feva Mallorca · Todos los derechos reservados</span>
+    <span>© 2024 Nova Mallorca · Todos los derechos reservados</span>
     <span>Hecho con ❤️ en Palma de Mallorca</span>
   </div>
 </footer>
@@ -569,10 +620,100 @@
 <!-- FLOATING WHATSAPP ONLY -->
 <div class="wa-float">
   <div class="wa-bubble">¡Reserva tu mesa! 🍽️</div>
-  <a href="https://wa.me/34971234567?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Feva" target="_blank" class="wa-btn" aria-label="WhatsApp">
+  <a href="https://wa.me/34971234567?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20mesa%20en%20Nova" target="_blank" class="wa-btn" aria-label="WhatsApp">
     <svg width="26" height="26" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 </div>
+
+<script>
+(function() {
+  const video       = document.getElementById('heroVideo');
+  const hero        = document.getElementById('scroll-hero');
+  const progressFill= document.getElementById('progressFill');
+  const heroOverlay = document.getElementById('heroOverlay');
+  const whyOverlay  = document.getElementById('whyOverlay');
+  const whyHeader   = document.getElementById('whyHeader');
+  const whyCards    = document.querySelectorAll('.wsc');
+  if (!video || !hero) return;
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) return;
+
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+  // --- Canvas para móvil (iOS no permite controlar currentTime directamente en video visible) ---
+  let canvas = null, ctx = null;
+  if (isMobile) {
+    canvas = document.createElement('canvas');
+    canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;';
+    video.parentNode.insertBefore(canvas, video);
+    ctx = canvas.getContext('2d');
+
+    function drawFrame() {
+      if (!video.videoWidth) return;
+      const vw = canvas.offsetWidth, vh = canvas.offsetHeight;
+      canvas.width = vw; canvas.height = vh;
+      // cover: recortar el video para llenar el canvas
+      const vr = video.videoWidth / video.videoHeight, cr = vw / vh;
+      let sw, sh, sx, sy;
+      if (vr > cr) { sh = video.videoHeight; sw = sh * cr; sx = (video.videoWidth - sw) / 2; sy = 0; }
+      else         { sw = video.videoWidth;  sh = sw / cr; sx = 0; sy = (video.videoHeight - sh) / 2; }
+      ctx.drawImage(video, sx, sy, sw, sh, 0, 0, vw, vh);
+    }
+    video.addEventListener('seeked', drawFrame);
+  }
+
+  video.pause(); video.currentTime = 0;
+  let ready = false;
+
+  video.addEventListener('loadedmetadata', () => {
+    if (isMobile) {
+      // iOS requiere play+pause para habilitar seeking arbitrario
+      video.play().then(() => { video.pause(); video.currentTime = 0; ready = true; }).catch(() => { ready = true; });
+    } else {
+      ready = true;
+    }
+  });
+  video.addEventListener('ended', () => { video.pause(); });
+  video.load();
+
+  function ease(t) { return t < .5 ? 2*t*t : -1+(4-2*t)*t; }
+  function phase(p, s, e) { return ease(Math.max(0, Math.min(1, (p - s) / (e - s)))); }
+
+  function update() {
+    if (!ready || !video.duration) return;
+    const scrolled   = -hero.getBoundingClientRect().top;
+    const scrollable = hero.offsetHeight - window.innerHeight;
+    const p = Math.max(0, Math.min(1, scrolled / scrollable));
+
+    if (progressFill) progressFill.style.width = (p * 100) + '%';
+
+    video.currentTime = Math.min(p * video.duration, video.duration - 0.001);
+
+    if (heroOverlay) heroOverlay.style.opacity = 1 - phase(p, 0.40, 0.54);
+
+    const wP = phase(p, 0.46, 0.60);
+    if (whyOverlay) { whyOverlay.style.opacity = wP; whyOverlay.classList.toggle('active', wP > 0.4); }
+
+    const hP = phase(p, 0.48, 0.58);
+    if (whyHeader) { whyHeader.style.opacity = hP; whyHeader.style.transform = `translateY(${(1 - hP) * 22}px)`; }
+
+    const starts = [0.57, 0.67, 0.77, 0.87];
+    const ends   = [0.67, 0.77, 0.87, 0.97];
+    whyCards.forEach((c, i) => {
+      const cp = phase(p, starts[i], ends[i]);
+      c.style.opacity = cp;
+      c.style.transform = `translateY(${(1 - cp) * 48}px)`;
+    });
+  }
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(() => { update(); ticking = false; }); ticking = true; }
+  }, { passive: true });
+  window.addEventListener('resize', update);
+})();
+</script>
 
 <script>
   window.addEventListener('scroll', () => {
